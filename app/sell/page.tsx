@@ -3,7 +3,9 @@ import Link from "next/link"
 import { ArrowUpRight, Camera, Handshake, ShieldCheck, Wrench } from "lucide-react"
 import { PageHero } from "@/components/page-hero"
 import { SectionHeading } from "@/components/section-heading"
-import { WHATSAPP_LINK, WHATSAPP_DISPLAY } from "@/lib/products"
+import { SiteHeader } from "@/components/site-header"
+import { SiteFooter } from "@/components/site-footer"
+import { CONTACT, waLink } from "@/lib/products"
 
 export const metadata: Metadata = {
   title: "Sell Your Machine | E-KWIP-T Sales and Service",
@@ -55,15 +57,18 @@ const reasons = [
 export default function SellPage() {
   return (
     <>
+      <SiteHeader />
+      <main>
       <PageHero
         eyebrow="Sell with us"
         title="Turn idle iron into cash"
         description="Whether it's a single dozer standing on the yard or a full fleet reduction, E-KWIP-T lists and sells earthmoving, agricultural and forestry equipment across South Africa."
+        image="/machines/wheel-loader.png"
       />
 
       <section className="border-b border-border bg-background">
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-20">
-          <SectionHeading eyebrow="How it works" title="Four steps to a sale" />
+          <SectionHeading tag="How it works" title="Four steps to a sale" />
           <ol className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {steps.map((step, i) => (
               <li
@@ -89,7 +94,7 @@ export default function SellPage() {
       <section className="border-b border-border bg-secondary">
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-20">
           <SectionHeading
-            eyebrow="Why E-KWIP-T"
+            tag="Why E-KWIP-T"
             title="Sellers keep coming back"
             className="text-secondary-foreground"
           />
@@ -118,12 +123,12 @@ export default function SellPage() {
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href={WHATSAPP_LINK}
+              href={waLink()}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-primary px-7 py-3.5 font-display text-sm font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-primary/90"
             >
-              WhatsApp {WHATSAPP_DISPLAY}
+              WhatsApp {CONTACT.displayPhone}
               <ArrowUpRight className="size-4" aria-hidden="true" />
             </a>
             <Link
@@ -135,6 +140,8 @@ export default function SellPage() {
           </div>
         </div>
       </section>
+      </main>
+      <SiteFooter />
     </>
   )
 }

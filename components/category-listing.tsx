@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { MachineCard } from './machine-card'
-import { categories, type Machine, type CategorySlug } from '@/lib/products'
+import { type Machine, type CategorySlug, type Category } from '@/lib/products'
 
 type SortKey = 'featured' | 'price-asc' | 'price-desc'
 
@@ -17,9 +17,11 @@ function priceValue(price: string): number {
 export function CategoryListing({
   machines,
   activeSlug,
+  categories,
 }: {
   machines: Machine[]
   activeSlug: CategorySlug
+  categories: Category[]
 }) {
   const [sort, setSort] = useState<SortKey>('featured')
 

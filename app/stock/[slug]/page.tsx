@@ -2,21 +2,21 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ChevronRight, MapPin, Clock, Calendar, Wrench, Check, Phone, ArrowLeft } from 'lucide-react'
+import { ChevronRight, MapPin, Clock, Calendar, Wrench, Check, Phone, ArrowLeft, MessageCircle } from 'lucide-react'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { MachineCard } from '@/components/machine-card'
 import {
-  machines,
-  getMachine,
-  getCategory,
-  getMachinesByCategory,
   CONTACT,
-  waLink,
+  waOrderLink,
 } from '@/lib/products'
+import { getMachineBySlug, getCategoryBySlug, getMachinesByCategory, getAllSlugs } from '@/lib/data'
 
-export function generateStaticParams() {
-  return machines.map((m) => ({ slug: m.slug }))
+export const revalidate = 0
+
+export async function generateStaticParams() {
+  const slugs = await getAllSlugs()
+  return slugs.map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({
@@ -25,7 +25,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const machine = getMachine(slug)
+  const machine = await getMachineBySlug(slug)
   if (!machine) return { title: 'Machine | E-kwip-T' }
   return {
     title: `${machine.name} For Sale | E-kwip-T`,
@@ -39,11 +39,11 @@ export default async function MachinePage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const machine = getMachine(slug)
+  const machine = await getMachineBySlug(slug)
   if (!machine) notFound()
 
-  const category = getCategory(machine.category)
-  const related = getMachinesByCategory(machine.category)
+  const category = await getCategoryBySlug(machine.category)
+  const related = (await getMachinesByCategory(machine.category))
     .filter((m) => m.slug !== machine.slug)
     .slice(0, 3)
 
@@ -137,16 +137,23 @@ export default async function MachinePage({
               {/* CTA */}
               <div className="mt-8 rounded-lg border border-border bg-brand p-5 text-brand-foreground">
                 <p className="text-sm text-brand-foreground/80">
-                  Contact {CONTACT.name} via WhatsApp to book a viewing or ask for more pictures.
+                  Ready to buy? Send {CONTACT.name} a WhatsApp order with the machine details pre-filled.
                 </p>
                 <a
-                  href={waLink(machine.name)}
+                  href={waOrderLink(machine)}
                   target="_blank"
                   rel="noopener"
-                  className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-6 py-3.5 font-display text-lg font-bold text-primary-foreground transition hover:brightness-95"
+                  className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#25d366] px-6 py-3.5 font-display text-lg font-bold text-white transition hover:bg-[#1da851]"
                 >
-                  <Phone className="h-5 w-5" />
-                  {CONTACT.displayPhone}
+                  <MessageCircle className="h-5 w-5" />
+                  Order via WhatsApp
+                </a>
+                <a
+                  href={`tel:${CONTACT.displayPhone.replace(/\s/g, '')}`}
+                  className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-md border border-brand-foreground/20 px-6 py-3 font-display text-sm font-semibold text-brand-foreground transition hover:bg-brand-foreground/10"
+                >
+                  <Phone className="h-4 w-4" />
+                  Or call {CONTACT.displayPhone}
                 </a>
               </div>
             </div>

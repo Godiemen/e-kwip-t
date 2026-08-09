@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
 export function BrandLogo({
@@ -5,35 +6,23 @@ export function BrandLogo({
   tone = 'light',
 }: {
   className?: string
-  /** light = for dark backgrounds, dark = for light backgrounds */
   tone?: 'light' | 'dark'
 }) {
-  const wordColor = tone === 'light' ? 'text-brand-foreground' : 'text-brand'
   return (
-    <span className={cn('inline-flex items-center gap-2.5', className)}>
-      <svg
-        viewBox="0 0 48 32"
-        className="h-8 w-12 shrink-0"
-        role="img"
-        aria-label="E-kwip-T excavator logo"
-      >
-        {/* excavator silhouette in amber */}
-        <g fill="var(--primary)">
-          <rect x="2" y="22" width="26" height="6" rx="1.5" />
-          <circle cx="7" cy="28" r="3" />
-          <circle cx="15" cy="28" r="3" />
-          <circle cx="23" cy="28" r="3" />
-          <rect x="9" y="13" width="14" height="9" rx="1.5" />
-          <path d="M22 15 L34 6 L37 8 L27 18 Z" />
-          <path d="M34 6 L44 12 L42 15 L33 10 Z" />
-          <path d="M41 14 l5 3 -1.5 3.5 -5 -2.5 z" />
-        </g>
-      </svg>
+    <span className={cn('inline-flex items-center gap-3', className)}>
+      <Image
+        src="/123367.jpg"
+        alt="E-kwip-T logo"
+        width={56}
+        height={56}
+        className="h-14 w-14 shrink-0 rounded-full object-cover ring-2 ring-white/20"
+        priority
+      />
       <span className="flex flex-col leading-none">
-        <span className={cn('font-display text-xl font-bold tracking-tight', wordColor)}>
+        <span className={cn('font-display text-lg font-bold tracking-tight', tone === 'light' ? 'text-[#f9f7f2]' : 'text-[#6b7c2a]')}>
           E-KWIP-T
         </span>
-        <span className="text-[0.55rem] font-semibold uppercase tracking-[0.22em] text-primary">
+        <span className={cn('text-[0.65rem] font-semibold uppercase tracking-[0.2em]', tone === 'light' ? 'text-[#f9f7f2]/80' : 'text-[#6b7c2a]/70')}>
           Sales &amp; Service
         </span>
       </span>

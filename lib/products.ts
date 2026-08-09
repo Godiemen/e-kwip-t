@@ -34,6 +34,7 @@ export const CONTACT = {
   name: 'Terrence',
   displayPhone: '082 636 5471',
   waNumber: '27826365471',
+  email: 'sales@ekwipt.co.za',
   company: 'E-kwip-T Sales and Service Pty Ltd',
 }
 
@@ -42,6 +43,22 @@ export function waLink(machineName?: string): string {
     ? `Hi E-kwip-T, I'd like more information on the ${machineName}.`
     : `Hi E-kwip-T, I'd like to ask about a machine.`
   return `https://wa.me/${CONTACT.waNumber}?text=${encodeURIComponent(text)}`
+}
+
+export function waOrderLink(machine: { name: string; price: string; vat?: string; year: string; hours: string; location: string; make: string }): string {
+  const lines = [
+    `Hi E-kwip-T, I'd like to order / enquire about:`,
+    ``,
+    `Machine: ${machine.name}`,
+    `Make: ${machine.make}`,
+    `Year: ${machine.year}`,
+    `Hours: ${machine.hours}`,
+    `Price: ${machine.price}${machine.vat ? ` (${machine.vat})` : ''}`,
+    `Location: ${machine.location}`,
+    ``,
+    `Is this still available? Please send me more details.`
+  ]
+  return `https://wa.me/${CONTACT.waNumber}?text=${encodeURIComponent(lines.join('\n'))}`
 }
 
 export const categories: Category[] = [

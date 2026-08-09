@@ -17,9 +17,17 @@ const oswald = Oswald({
 })
 
 export const metadata: Metadata = {
-  title: 'E-kwip-T | Agricultural, Forestry, Yellow & Mining Equipment For Sale, South Africa',
+  title: {
+    default: 'E-kwip-T Sales and Service | Equipment & Machinery Sales',
+    template: '%s | E-kwip-T Sales and Service',
+  },
   description:
-    'E-kwip-T Sales and Service buys and sells agricultural, forestry, yellow equipment, mining plant and site support machinery across South Africa. Inspected stock, straight pricing.',
+    'E-kwip-T Sales and Service — agricultural, forestry, yellow equipment, mining plant and support machinery for sale across South Africa.',
+  icons: {
+    icon: '/123367.jpg',
+    shortcut: '/123367.jpg',
+    apple: '/123367.jpg',
+  },
   generator: 'v0.app',
 }
 

@@ -1,20 +1,39 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ChevronRight } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 export function PageHero({
   eyebrow,
   title,
   description,
   breadcrumbs,
+  image,
 }: {
   eyebrow?: string
   title: string
   description?: string
   breadcrumbs?: { label: string; href?: string }[]
+  image?: string
 }) {
   return (
-    <section className="plate-texture text-brand-foreground">
-      <div className="mx-auto max-w-7xl px-4 py-14 md:px-6 md:py-20">
+    <section
+      className={cn('relative overflow-hidden text-brand-foreground', image ? 'min-h-[300px]' : 'plate-texture')}
+    >
+      {image && (
+        <>
+          <Image
+            src={image}
+            alt=""
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" />
+        </>
+      )}
+      <div className="relative mx-auto max-w-7xl px-4 py-14 md:px-6 md:py-20">
         {breadcrumbs && (
           <nav aria-label="Breadcrumb" className="mb-5 flex flex-wrap items-center gap-1 text-sm text-brand-foreground/60">
             {breadcrumbs.map((b, i) => (

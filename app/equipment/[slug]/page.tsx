@@ -5,10 +5,13 @@ import { SiteFooter } from '@/components/site-footer'
 import { PageHero } from '@/components/page-hero'
 import { CategoryListing } from '@/components/category-listing'
 import { ContactBand } from '@/components/contact-band'
-import { categories, getCategory, getMachinesByCategory } from '@/lib/products'
+import { getCategoryBySlug, getMachinesByCategory, getAllCategorySlugs, getCategories } from '@/lib/data'
 
-export function generateStaticParams() {
-  return categories.map((c) => ({ slug: c.slug }))
+export const revalidate = 0
+
+export async function generateStaticParams() {
+  const slugs = await getAllCategorySlugs()
+  return slugs.map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({
@@ -17,7 +20,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const category = getCategory(slug)
+  const category = await getCategoryBySlug(slug)
   if (!category) return { title: 'Equipment | E-kwip-T' }
   return {
     title: `${category.name} For Sale | E-kwip-T`,
@@ -31,10 +34,11 @@ export default async function CategoryPage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const category = getCategory(slug)
+  const category = await getCategoryBySlug(slug)
   if (!category) notFound()
 
-  const machines = getMachinesByCategory(category.slug)
+  const machines = await getMachinesByCategory(category.slug)
+  const allCats = await getCategories()
 
   return (
     <>
@@ -49,8 +53,9 @@ export default async function CategoryPage({
             { label: 'Equipment', href: '/equipment/yellow-equipment' },
             { label: category.shortName },
           ]}
+          image={category.image}
         />
-        <CategoryListing machines={machines} activeSlug={category.slug} />
+        <CategoryListing machines={machines} activeSlug={category.slug} categories={allCats} />
         <ContactBand />
       </main>
       <SiteFooter />
