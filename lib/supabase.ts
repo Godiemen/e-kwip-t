@@ -1,14 +1,42 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+let _supabase: SupabaseClient | null = null
+let _supabaseAdmin: SupabaseClient | null = null
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
-
-export function getSupabaseAdmin() {
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
-  if (!serviceRoleKey) {
-    throw new Error('SUPABASE_SERVICE_ROLE_KEY is not set')
-  }
-  return createClient(supabaseUrl, serviceRoleKey)
+function getUrl(): string {
+  return process.env.NEXT_PUBLIC_SUPABASE_URL || ''
 }
+
+function getAnonKey(): string {
+  return process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+}
+
+export function getSupabase(): SupabaseClient {
+  if (!_supabase) {
+    const url = getUrl()
+    const key = getAnonKey()
+    if (!url || !key) {
+      throw new Error('Supabase env vars are not set')
+    }
+    _supabase = createClient(url, key)
+  }
+  return _supabase
+}
+
+export function getSupabaseAdmin(): SupabaseClient {
+  if (!_supabaseAdmin) {
+    const url = getUrl()
+    const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+    if (!url || !serviceRoleKey) {
+      throw new Error('Supabase env vars are not set')
+    }
+    _supabaseAdmin = createClient(url, serviceRoleKey)
+  }
+  return _supabaseAdmin
+}
+
+export const supabase = new Proxy({} as SupabaseClient, {
+  get(_target, prop) {
+    return Reflect.get(getSupabase(), prop)
+  },
+})
