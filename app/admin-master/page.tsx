@@ -338,29 +338,29 @@ export default function AdminMasterPage() {
 
   return (
     <div className="min-h-screen bg-[#f9f7f2]">
-      {/* Top bar */}
+        {/* Top bar */}
       <header className="sticky top-0 z-40 border-b border-[#d7d4c9] bg-[#6b7c2a]">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-6">
-          <div className="flex items-center gap-3">
-            <Image src="/123367.jpg" alt="Logo" width={40} height={40} className="rounded-full ring-2 ring-white/20" />
-            <div>
-              <h1 className="font-display text-lg font-bold text-[#f9f7f2]">Admin Master</h1>
-              <p className="text-xs text-[#f9f7f2]/70">E-kwip-T Management</p>
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-3 sm:px-4 md:px-6 md:py-4">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <Image src="/123367.jpg" alt="Logo" width={36} height={36} className="h-9 w-9 shrink-0 rounded-full ring-2 ring-white/20 sm:h-10 sm:w-10" />
+            <div className="min-w-0">
+              <h1 className="truncate font-display text-base font-bold text-[#f9f7f2] sm:text-lg">Admin Master</h1>
+              <p className="hidden text-xs text-[#f9f7f2]/70 sm:block">E-kwip-T Management</p>
             </div>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <a
               href="/"
-              className="rounded-md px-3 py-2 text-sm font-medium text-[#f9f7f2]/80 transition hover:text-[#f9f7f2]"
+              className="rounded-md px-2.5 py-2 text-xs font-medium text-[#f9f7f2]/80 transition hover:text-[#f9f7f2] sm:px-3 sm:text-sm"
             >
               View Site
             </a>
             <button
               onClick={handleLogout}
-              className="inline-flex items-center gap-1.5 rounded-md bg-[#f9f7f2]/10 px-3 py-2 text-sm font-medium text-[#f9f7f2] transition hover:bg-[#f9f7f2]/20"
+              className="inline-flex items-center gap-1.5 rounded-md bg-[#f9f7f2]/10 px-2.5 py-2 text-xs font-medium text-[#f9f7f2] transition hover:bg-[#f9f7f2]/20 sm:px-3 sm:text-sm"
             >
               <LogOut className="h-4 w-4" />
-              Logout
+              <span className="hidden sm:inline">Logout</span>
             </button>
           </div>
         </div>
@@ -383,7 +383,7 @@ export default function AdminMasterPage() {
 
         {/* Toolbar */}
         <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div className="relative flex-1 max-w-sm">
+          <div className="relative w-full sm:max-w-sm">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#5c6b52]" />
             <input
               type="text"
@@ -413,98 +413,159 @@ export default function AdminMasterPage() {
                 featured: false,
               })
             }}
-            className="inline-flex items-center gap-2 rounded-lg bg-[#6b7c2a] px-5 py-2.5 font-display text-sm font-semibold text-[#f9f7f2] transition hover:bg-[#5a6a22]"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#6b7c2a] px-5 py-2.5 font-display text-sm font-semibold text-[#f9f7f2] transition hover:bg-[#5a6a22] sm:w-auto"
           >
             <Plus className="h-4 w-4" />
             Add Machine
           </button>
         </div>
 
-        {/* Machine table */}
-        <div className="overflow-hidden rounded-xl border border-[#d7d4c9] bg-white shadow-sm">
-          <table className="w-full text-left text-sm">
-            <thead className="border-b border-[#d7d4c9] bg-[#efede5]">
-              <tr>
-                <th className="px-4 py-3 font-semibold text-[#202e12]">Image</th>
-                <th className="px-4 py-3 font-semibold text-[#202e12]">Name</th>
-                <th className="px-4 py-3 font-semibold text-[#202e12]">Category</th>
-                <th className="px-4 py-3 font-semibold text-[#202e12]">Price</th>
-                <th className="px-4 py-3 font-semibold text-[#202e12]">Featured</th>
-                <th className="px-4 py-3 text-right font-semibold text-[#202e12]">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-[#d7d4c9]">
-              {filtered.length === 0 && (
-                <tr>
-                  <td colSpan={6} className="px-4 py-12 text-center text-[#5c6b52]">
-                    No machines found. Click "Add Machine" to create one.
-                  </td>
-                </tr>
-              )}
+        {/* Machine list - cards on mobile, table on desktop */}
+        {filtered.length === 0 ? (
+          <div className="rounded-xl border border-[#d7d4c9] bg-white p-8 text-center text-[#5c6b52] shadow-sm sm:p-12">
+            No machines found. Click "Add Machine" to create one.
+          </div>
+        ) : (
+          <>
+            {/* Mobile cards */}
+            <div className="space-y-3 sm:hidden">
               {filtered.map((m) => (
-                <tr key={m.id} className="transition hover:bg-[#f9f7f2]">
-                  <td className="px-4 py-3">
+                <div key={m.id} className="rounded-xl border border-[#d7d4c9] bg-white p-3 shadow-sm">
+                  <div className="flex items-start gap-3">
                     {m.image ? (
                       <Image
                         src={m.image}
                         alt={m.name}
-                        width={48}
-                        height={48}
-                        className="h-12 w-12 rounded-lg object-cover"
+                        width={56}
+                        height={56}
+                        className="h-14 w-14 shrink-0 rounded-lg object-cover"
                       />
                     ) : (
-                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#efede5]">
+                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-[#efede5]">
                         <ImageIcon className="h-5 w-5 text-[#5c6b52]" />
                       </div>
                     )}
-                  </td>
-                  <td className="px-4 py-3">
-                    <p className="font-semibold text-[#202e12]">{m.name}</p>
-                    <p className="text-xs text-[#5c6b52]">{m.make} · {m.year}</p>
-                  </td>
-                  <td className="px-4 py-3">
-                    <span className="rounded-full bg-[#efede5] px-2.5 py-1 text-xs font-semibold text-[#6b7c2a]">
-                      {catOptions.find((c) => c.slug === m.category_slug)?.name ?? m.category_slug}
-                    </span>
-                  </td>
-                  <td className="px-4 py-3">
-                    <span className="font-display font-bold text-[#202e12]">{m.price}</span>
-                    {m.vat && <span className="ml-1 text-xs text-[#5c6b52]">{m.vat}</span>}
-                  </td>
-                  <td className="px-4 py-3">
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate font-semibold text-[#202e12]">{m.name}</p>
+                      <p className="truncate text-xs text-[#5c6b52]">{m.make} · {m.year}</p>
+                      <div className="mt-1.5 flex items-center gap-2">
+                        <span className="rounded-full bg-[#efede5] px-2 py-0.5 text-xs font-semibold text-[#6b7c2a]">
+                          {catOptions.find((c) => c.slug === m.category_slug)?.name ?? m.category_slug}
+                        </span>
+                        <span className="font-display text-sm font-bold text-[#202e12]">{m.price}</span>
+                        {m.vat && <span className="text-xs text-[#5c6b52]">{m.vat}</span>}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-3 flex items-center justify-end gap-2 border-t border-[#d7d4c9] pt-3">
                     <button
                       onClick={() => toggleFeatured(m)}
-                      className={`inline-flex h-8 w-8 items-center justify-center rounded-lg transition ${
+                      className={`inline-flex h-9 w-9 items-center justify-center rounded-lg transition ${
                         m.featured ? 'bg-yellow-100 text-yellow-600' : 'bg-[#efede5] text-[#5c6b52]'
                       }`}
                       title={m.featured ? 'Unfeature' : 'Feature'}
                     >
                       <Star className="h-4 w-4" fill={m.featured ? 'currentColor' : 'none'} />
                     </button>
-                  </td>
-                  <td className="px-4 py-3">
-                    <div className="flex items-center justify-end gap-2">
-                      <button
-                        onClick={() => setEditing(m)}
-                        className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-[#efede5] text-[#6b7c2a] transition hover:bg-[#6b7c2a] hover:text-[#f9f7f2]"
-                        title="Edit"
-                      >
-                        <Edit3 className="h-4 w-4" />
-                      </button>
-                      <button
-                        onClick={() => deleteMachine(m.id, m.name)}
-                        className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-red-50 text-red-600 transition hover:bg-red-600 hover:text-white"
-                        title="Delete"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </button>
-                    </div>
-                  </td>
-                </tr>
+                    <button
+                      onClick={() => setEditing(m)}
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-[#efede5] text-[#6b7c2a] transition hover:bg-[#6b7c2a] hover:text-[#f9f7f2]"
+                      title="Edit"
+                    >
+                      <Edit3 className="h-4 w-4" />
+                    </button>
+                    <button
+                      onClick={() => deleteMachine(m.id, m.name)}
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-red-50 text-red-600 transition hover:bg-red-600 hover:text-white"
+                      title="Delete"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </button>
+                  </div>
+                </div>
               ))}
-            </tbody>
-          </table>
-        </div>
+            </div>
+
+            {/* Desktop table */}
+            <div className="hidden overflow-hidden rounded-xl border border-[#d7d4c9] bg-white shadow-sm sm:block">
+              <table className="w-full text-left text-sm">
+                <thead className="border-b border-[#d7d4c9] bg-[#efede5]">
+                  <tr>
+                    <th className="px-4 py-3 font-semibold text-[#202e12]">Image</th>
+                    <th className="px-4 py-3 font-semibold text-[#202e12]">Name</th>
+                    <th className="px-4 py-3 font-semibold text-[#202e12]">Category</th>
+                    <th className="px-4 py-3 font-semibold text-[#202e12]">Price</th>
+                    <th className="px-4 py-3 font-semibold text-[#202e12]">Featured</th>
+                    <th className="px-4 py-3 text-right font-semibold text-[#202e12]">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-[#d7d4c9]">
+                  {filtered.map((m) => (
+                    <tr key={m.id} className="transition hover:bg-[#f9f7f2]">
+                      <td className="px-4 py-3">
+                        {m.image ? (
+                          <Image
+                            src={m.image}
+                            alt={m.name}
+                            width={48}
+                            height={48}
+                            className="h-12 w-12 rounded-lg object-cover"
+                          />
+                        ) : (
+                          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#efede5]">
+                            <ImageIcon className="h-5 w-5 text-[#5c6b52]" />
+                          </div>
+                        )}
+                      </td>
+                      <td className="px-4 py-3">
+                        <p className="font-semibold text-[#202e12]">{m.name}</p>
+                        <p className="text-xs text-[#5c6b52]">{m.make} · {m.year}</p>
+                      </td>
+                      <td className="px-4 py-3">
+                        <span className="rounded-full bg-[#efede5] px-2.5 py-1 text-xs font-semibold text-[#6b7c2a]">
+                          {catOptions.find((c) => c.slug === m.category_slug)?.name ?? m.category_slug}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3">
+                        <span className="font-display font-bold text-[#202e12]">{m.price}</span>
+                        {m.vat && <span className="ml-1 text-xs text-[#5c6b52]">{m.vat}</span>}
+                      </td>
+                      <td className="px-4 py-3">
+                        <button
+                          onClick={() => toggleFeatured(m)}
+                          className={`inline-flex h-8 w-8 items-center justify-center rounded-lg transition ${
+                            m.featured ? 'bg-yellow-100 text-yellow-600' : 'bg-[#efede5] text-[#5c6b52]'
+                          }`}
+                          title={m.featured ? 'Unfeature' : 'Feature'}
+                        >
+                          <Star className="h-4 w-4" fill={m.featured ? 'currentColor' : 'none'} />
+                        </button>
+                      </td>
+                      <td className="px-4 py-3">
+                        <div className="flex items-center justify-end gap-2">
+                          <button
+                            onClick={() => setEditing(m)}
+                            className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-[#efede5] text-[#6b7c2a] transition hover:bg-[#6b7c2a] hover:text-[#f9f7f2]"
+                            title="Edit"
+                          >
+                            <Edit3 className="h-4 w-4" />
+                          </button>
+                          <button
+                            onClick={() => deleteMachine(m.id, m.name)}
+                            className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-red-50 text-red-600 transition hover:bg-red-600 hover:text-white"
+                            title="Delete"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
+        )
       </main>
 
       {/* Edit / Create modal */}
@@ -582,10 +643,10 @@ function EditModal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/50 p-4 py-8">
+    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/50 p-3 py-6 sm:p-4 sm:py-8">
       <div className="w-full max-w-2xl rounded-2xl bg-[#f9f7f2] shadow-2xl">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-[#d7d4c9] px-6 py-4">
+        <div className="flex items-center justify-between border-b border-[#d7d4c9] px-4 py-4 sm:px-6">
           <h2 className="font-display text-xl font-bold text-[#202e12]">
             {isNew ? 'Add Machine' : 'Edit Machine'}
           </h2>
@@ -598,7 +659,7 @@ function EditModal({
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="max-h-[70vh] overflow-y-auto px-6 py-5">
+        <form onSubmit={handleSubmit} className="max-h-[calc(100vh-8rem)] overflow-y-auto px-4 py-4 sm:max-h-[70vh] sm:px-6 sm:py-5">
           {/* Image upload */}
           <div className="mb-5">
             <label className="mb-2 block text-sm font-semibold text-[#202e12]">Machine Image</label>
@@ -783,7 +844,7 @@ function EditModal({
           </div>
 
           {/* Actions */}
-          <div className="flex items-center justify-end gap-3 border-t border-[#d7d4c9] pt-4">
+          <div className="flex items-center justify-end gap-3 border-t border-[#d7d4c9] pt-4 pb-1">
             <button
               type="button"
               onClick={onClose}
