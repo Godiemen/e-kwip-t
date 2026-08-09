@@ -185,10 +185,10 @@ export default async function HomePage() {
               </p>
             </div>
             <Link
-              href="/sell-with-us"
+              href="/contact"
               className="inline-flex shrink-0 items-center gap-2 rounded-md bg-[#6b7c2a] px-6 py-3.5 font-display font-semibold text-[#f9f7f2] transition hover:bg-[#5a6a22]"
             >
-              Sell With Us
+              Contact Us
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
