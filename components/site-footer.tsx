@@ -5,7 +5,7 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/sell-with-us', label: 'Sell With Us' },
-  { href: '/shop', label: 'Shop' },
+  { href: '/equipment', label: 'Shop' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/contact', label: 'Contact' },
 ]
@@ -119,7 +119,7 @@ export function SiteFooter() {
             {shopCategories.map((c) => (
               <li key={c.slug}>
                 <Link
-                  href={`/shop/${c.slug}`}
+                  href={`/equipment/${c.slug}`}
                   className="transition hover:text-[#f9f7f2]"
                 >
                   {c.name}
@@ -140,8 +140,12 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto max-w-7xl px-4 py-5 text-center text-xs text-[#f9f7f2]/55 md:px-6">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-3 px-4 py-5 text-center text-xs text-[#f9f7f2]/55 md:flex-row md:justify-between md:px-6">
           <p>© {new Date().getFullYear()} E-kwip-T Sales &amp; Service. All rights reserved.</p>
+          <div className="flex items-center gap-4">
+            <Link href="/cookies" className="transition hover:text-[#f9f7f2]">Cookie Policy</Link>
+            <Link href="/terms" className="transition hover:text-[#f9f7f2]">Terms &amp; Conditions</Link>
+          </div>
         </div>
       </div>
     </footer>
