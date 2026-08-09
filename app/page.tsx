@@ -60,7 +60,7 @@ export default async function HomePage() {
                   used goods, big or small. Every listing is priced, specced and ready for an
                   on-site inspection — no back-and-forth required.{' '}
                   <Link
-                    href="/shop"
+                    href="/equipment"
                     className="font-semibold text-[#6b7c2a] underline decoration-1 underline-offset-4 hover:text-[#4b6572]"
                   >
                     Browse our stock online
@@ -68,7 +68,7 @@ export default async function HomePage() {
                   .
                 </p>
                 <Link
-                  href="/shop"
+                  href="/equipment"
                   className="mt-8 inline-flex items-center rounded-md bg-[#6b7c2a] px-7 py-3.5 font-display font-semibold text-[#f9f7f2] transition hover:bg-[#5a6a22]"
                 >
                   Browse Shop
@@ -127,7 +127,7 @@ export default async function HomePage() {
                 </h2>
               </div>
               <Link
-                href="/shop"
+                href="/equipment"
                 className="inline-flex shrink-0 items-center gap-2 rounded-md border-2 border-[#6b7c2a] px-5 py-2.5 text-sm font-semibold text-[#6b7c2a] transition hover:bg-[#6b7c2a] hover:text-[#f9f7f2]"
               >
                 View All Stock

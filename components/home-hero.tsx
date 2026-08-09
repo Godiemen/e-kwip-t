@@ -25,7 +25,7 @@ export function HomeHero() {
             on-site inspection — no back-and-forth required.
           </p>
           <Link
-            href="/shop"
+            href="/equipment"
             className="mt-8 inline-flex items-center rounded-md bg-[#6b7c2a] px-7 py-3.5 font-display font-semibold text-[#f9f7f2] transition hover:bg-[#5a6a22]"
           >
             Browse Shop

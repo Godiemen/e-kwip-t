@@ -565,7 +565,7 @@ export default function AdminMasterPage() {
               </table>
             </div>
           </>
-        )
+        )}
       </main>
 
       {/* Edit / Create modal */}
