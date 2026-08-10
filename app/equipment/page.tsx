@@ -35,12 +35,13 @@ export default async function AllEquipmentPage() {
           image="/machines/komatsu-d41-dozer.png"
         />
 
-        <section className="mx-auto max-w-7xl px-4 py-12 md:px-6 md:py-16">
+        <section className="mx-auto max-w-7xl px-4 py-16 md:px-6 md:py-20">
           {/* Category filter */}
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="mr-2 hidden text-xs font-semibold uppercase tracking-[0.2em] text-[#5c6b52] sm:inline">Filter:</span>
             <Link
               href="/equipment"
-              className="rounded-md bg-[#6b7c2a] px-4 py-2 text-sm font-semibold text-[#f9f7f2]"
+              className="rounded-lg bg-[#6b7c2a] px-5 py-2.5 text-sm font-semibold text-[#f9f7f2] shadow-sm transition hover:bg-[#5a6a22]"
             >
               All
             </Link>
@@ -48,7 +49,7 @@ export default async function AllEquipmentPage() {
               <Link
                 key={c.slug}
                 href={`/equipment/${c.slug}`}
-                className="rounded-md border border-[#d7d4c9] bg-white px-4 py-2 text-sm font-medium text-[#5c6b52] transition hover:border-[#6b7c2a] hover:text-[#6b7c2a]"
+                className="rounded-lg border border-[#d7d4c9] bg-white px-5 py-2.5 text-sm font-medium text-[#5c6b52] transition hover:border-[#6b7c2a] hover:bg-[#efede5] hover:text-[#6b7c2a]"
               >
                 {c.shortName}
               </Link>
@@ -60,7 +61,7 @@ export default async function AllEquipmentPage() {
             {machines.length === 1 ? 'machine' : 'machines'} available
           </p>
 
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {machines.map((m) => (
               <MachineCard key={m.slug} machine={m} />
             ))}

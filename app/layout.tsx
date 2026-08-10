@@ -25,9 +25,9 @@ export const metadata: Metadata = {
   description:
     'E-kwip-T Sales and Service — agricultural, forestry, yellow equipment, mining plant and support machinery for sale across South Africa.',
   icons: {
-    icon: '/123367.jpg',
-    shortcut: '/123367.jpg',
-    apple: '/123367.jpg',
+    icon: '/123690 (1).jpg',
+    shortcut: '/123690 (1).jpg',
+    apple: '/123690 (1).jpg',
   },
   generator: 'v0.app',
 }

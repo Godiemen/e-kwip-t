@@ -9,7 +9,7 @@ import { getCategory, waOrderLink } from '@/lib/products'
 export function MachineCard({ machine }: { machine: Machine }) {
   const category = getCategory(machine.category)
   return (
-    <div className="group flex flex-col overflow-hidden rounded-lg border border-border bg-card transition hover:border-primary hover:shadow-lg">
+    <div className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition hover:border-primary hover:shadow-2xl">
       <Link href={`/stock/${machine.slug}`} className="block">
         <div className="relative aspect-[4/3] overflow-hidden bg-muted">
           <Image
@@ -17,15 +17,15 @@ export function MachineCard({ machine }: { machine: Machine }) {
             alt={machine.name}
             fill
             sizes="(max-width: 768px) 100vw, 25vw"
-            className="object-cover transition duration-500 group-hover:scale-105"
+            className="object-cover transition duration-700 group-hover:scale-110"
           />
-          <span className="absolute left-3 top-3 rounded bg-brand/90 px-2 py-1 text-[0.65rem] font-semibold uppercase tracking-wider text-brand-foreground backdrop-blur">
+          <span className="absolute left-3 top-3 rounded-full bg-brand/90 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-wider text-brand-foreground shadow-md backdrop-blur-sm">
             {category?.shortName}
           </span>
         </div>
       </Link>
 
-      <div className="flex flex-1 flex-col p-4">
+      <div className="flex flex-1 flex-col p-5">
         <Link href={`/stock/${machine.slug}`}>
           <h3 className="font-display text-lg font-semibold leading-tight text-card-foreground transition group-hover:text-primary">
             {machine.name}
@@ -41,7 +41,7 @@ export function MachineCard({ machine }: { machine: Machine }) {
           </span>
         </div>
 
-        <div className="mt-4 flex items-end justify-between border-t border-border pt-3">
+        <div className="mt-4 flex items-end justify-between border-t border-border pt-4">
           <div>
             <span className="font-display text-xl font-bold text-foreground">{machine.price}</span>
             {machine.vat && (
@@ -62,7 +62,7 @@ export function MachineCard({ machine }: { machine: Machine }) {
           target="_blank"
           rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()}
-          className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#25d366] px-4 py-2.5 text-sm font-bold text-white transition hover:bg-[#1da851]"
+          className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#25d366] px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-[#1da851]"
         >
           <MessageCircle className="h-4 w-4" />
           Order via WhatsApp

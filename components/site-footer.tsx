@@ -15,6 +15,7 @@ const shopCategories = [
   { slug: 'forestry', name: 'Forestry Equipment' },
   { slug: 'mining', name: 'Mining Plant' },
   { slug: 'support', name: 'Support Machinery' },
+  { slug: 'commercial-vehicles', name: 'Commercial Vehicles' },
 ]
 
 const socials = [

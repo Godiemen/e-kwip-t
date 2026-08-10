@@ -24,9 +24,10 @@ export default function TermsPage() {
           ]}
         />
 
-        <section className="bg-[#f9f7f2] py-16 md:py-24">
+        <section className="bg-[#f9f7f2] py-20 md:py-28">
           <div className="mx-auto max-w-3xl px-4 md:px-6">
-            <div className="space-y-8 text-[#202e12]">
+            <div className="rounded-2xl border border-[#d7d4c9] bg-white p-8 shadow-sm md:p-12">
+              <div className="space-y-8 text-[#202e12]">
               <div>
                 <h2 className="font-display text-2xl font-bold text-[#5a6a22]">1. Introduction</h2>
                 <p className="mt-3 leading-relaxed text-[#5c6b52]">
@@ -137,6 +138,7 @@ export default function TermsPage() {
               <p className="border-t border-[#d7d4c9] pt-6 text-sm text-[#5c6b52]">
                 Last updated: August 2026
               </p>
+            </div>
             </div>
           </div>
         </section>

@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export function HomeHero() {
   return (
-    <section className="relative min-h-[600px] overflow-hidden bg-[#3a4d45]">
+    <section className="relative min-h-[640px] overflow-hidden bg-[#3a4d45]">
       <Image
         src="/machines/construction-site-hero.png"
         alt="Tractor ploughing a field at sunset"
@@ -12,24 +12,37 @@ export function HomeHero() {
         sizes="100vw"
         className="object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-black/20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#202e12]/90 via-[#202e12]/65 to-black/40" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#202e12]/60 via-transparent to-transparent" />
 
-      <div className="relative mx-auto flex min-h-[600px] max-w-7xl items-center px-4 md:px-6">
-        <div className="max-w-2xl py-24">
-          <h1 className="font-display text-5xl font-bold leading-[1.05] text-[#f9f7f2] md:text-6xl lg:text-7xl">
-            Heavy equipment, bought and sold straight.
+      <div className="relative mx-auto flex min-h-[640px] max-w-7xl items-center px-4 md:px-6">
+        <div className="max-w-2xl py-28">
+          <div className="flex items-center gap-3">
+            <span className="h-px w-12 bg-[#6b7c2a]" />
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f9f7f2]/60">E-kwip-T Sales &amp; Service</span>
+          </div>
+          <h1 className="mt-6 font-display text-5xl font-bold leading-[1.05] text-[#f9f7f2] md:text-6xl lg:text-7xl">
+            Heavy equipment/Machinery, bought and sold straight.
           </h1>
-          <p className="mt-5 max-w-xl text-lg text-[#f9f7f2]/90">
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-[#f9f7f2]/70">
             E-kwip-T sources and sells agricultural, forestry, yellow equipment, mining plant and
             site support gear across South Africa. Every listing is priced, specced and ready for an
             on-site inspection — no back-and-forth required.
           </p>
-          <Link
-            href="/equipment"
-            className="mt-8 inline-flex items-center rounded-md bg-[#6b7c2a] px-7 py-3.5 font-display font-semibold text-[#f9f7f2] transition hover:bg-[#5a6a22]"
-          >
-            Browse Shop
-          </Link>
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+            <Link
+              href="/equipment"
+              className="inline-flex items-center rounded-lg bg-[#6b7c2a] px-7 py-3.5 font-display font-semibold text-[#f9f7f2] shadow-lg transition hover:bg-[#5a6a22]"
+            >
+              Browse Shop
+            </Link>
+            <Link
+              href="/about"
+              className="inline-flex items-center rounded-lg border-2 border-[#f9f7f2]/30 px-7 py-3.5 font-display font-semibold text-[#f9f7f2] backdrop-blur-sm transition hover:bg-[#f9f7f2]/10"
+            >
+              About Us
+            </Link>
+          </div>
         </div>
       </div>
     </section>

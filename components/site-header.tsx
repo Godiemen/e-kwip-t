@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Menu, X, ChevronDown, ChevronRight, Tractor, Trees, Truck, HardHat, Wrench } from 'lucide-react'
+import { Menu, X, ChevronDown, ChevronRight, Tractor, Trees, Truck, HardHat, Wrench, Car } from 'lucide-react'
 import { BrandLogo } from './brand-logo'
 import { cn } from '@/lib/utils'
 import { categories } from '@/lib/products'
@@ -15,6 +15,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
   'yellow-equipment': <Truck className="h-5 w-5" />,
   mining: <HardHat className="h-5 w-5" />,
   support: <Wrench className="h-5 w-5" />,
+  'commercial-vehicles': <Car className="h-5 w-5" />,
 }
 
 const navLinks = [

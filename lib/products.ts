@@ -4,6 +4,7 @@ export type CategorySlug =
   | 'yellow-equipment'
   | 'mining'
   | 'support'
+  | 'commercial-vehicles'
 
 export type Category = {
   slug: CategorySlug
@@ -96,6 +97,13 @@ export const categories: Category[] = [
     shortName: 'Support',
     blurb: 'Generators, compressors, pumps and site support gear.',
     image: '/machines/diesel-generator.png',
+  },
+  {
+    slug: 'commercial-vehicles',
+    name: 'Commercial Vehicles',
+    shortName: 'Vehicles',
+    blurb: 'Trucks, vans, bakkies and light commercial vehicles for business and site work.',
+    image: '/machines/jcb-3cx-backhoe.png',
   },
 ]
 

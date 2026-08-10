@@ -237,7 +237,7 @@ export default function AdminMasterPage() {
             <div className="bg-[#6b7c2a] px-8 py-6 text-center">
               <div className="mx-auto mb-3 inline-flex h-16 w-16 items-center justify-center rounded-full ring-4 ring-white/20">
                 <Image
-                  src="/123367.jpg"
+                  src="/123690 (1).jpg"
                   alt="E-kwip-T logo"
                   width={64}
                   height={64}
@@ -342,7 +342,7 @@ export default function AdminMasterPage() {
       <header className="sticky top-0 z-40 border-b border-[#d7d4c9] bg-[#6b7c2a]">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-3 sm:px-4 md:px-6 md:py-4">
           <div className="flex items-center gap-2 sm:gap-3">
-            <Image src="/123367.jpg" alt="Logo" width={36} height={36} className="h-9 w-9 shrink-0 rounded-full ring-2 ring-white/20 sm:h-10 sm:w-10" />
+            <Image src="/123690 (1).jpg" alt="Logo" width={36} height={36} className="h-9 w-9 shrink-0 rounded-full ring-2 ring-white/20 sm:h-10 sm:w-10" />
             <div className="min-w-0">
               <h1 className="truncate font-display text-base font-bold text-[#f9f7f2] sm:text-lg">Admin Master</h1>
               <p className="hidden text-xs text-[#f9f7f2]/70 sm:block">E-kwip-T Management</p>

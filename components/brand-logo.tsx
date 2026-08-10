@@ -11,7 +11,7 @@ export function BrandLogo({
   return (
     <span className={cn('inline-flex items-center gap-3', className)}>
       <Image
-        src="/123367.jpg"
+        src="/123690 (1).jpg"
         alt="E-kwip-T logo"
         width={56}
         height={56}

@@ -18,7 +18,7 @@ export function PageHero({
 }) {
   return (
     <section
-      className={cn('relative overflow-hidden text-brand-foreground', image ? 'min-h-[300px]' : 'plate-texture')}
+      className={cn('relative overflow-hidden text-brand-foreground', image ? 'min-h-[440px]' : 'plate-texture')}
     >
       {image && (
         <>
@@ -30,12 +30,13 @@ export function PageHero({
             sizes="100vw"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#202e12]/90 via-[#202e12]/65 to-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#202e12]/60 via-transparent to-transparent" />
         </>
       )}
-      <div className="relative mx-auto max-w-7xl px-4 py-14 md:px-6 md:py-20">
+      <div className="relative mx-auto max-w-7xl px-4 py-20 md:px-6 md:py-28">
         {breadcrumbs && (
-          <nav aria-label="Breadcrumb" className="mb-5 flex flex-wrap items-center gap-1 text-sm text-brand-foreground/60">
+          <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center gap-1 text-sm text-brand-foreground/50">
             {breadcrumbs.map((b, i) => (
               <span key={b.label} className="flex items-center gap-1">
                 {b.href ? (
@@ -43,7 +44,7 @@ export function PageHero({
                     {b.label}
                   </Link>
                 ) : (
-                  <span className="text-brand-foreground/85">{b.label}</span>
+                  <span className="text-brand-foreground/80">{b.label}</span>
                 )}
                 {i < breadcrumbs.length - 1 && <ChevronRight className="h-4 w-4" />}
               </span>
@@ -51,16 +52,16 @@ export function PageHero({
           </nav>
         )}
         {eyebrow && (
-          <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-            <span className="h-2 w-6 bg-primary" aria-hidden />
-            {eyebrow}
-          </span>
+          <div className="flex items-center gap-3">
+            <span className="h-px w-12 bg-primary" aria-hidden />
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">{eyebrow}</span>
+          </div>
         )}
-        <h1 className="mt-3 max-w-3xl text-balance font-display text-4xl font-bold tracking-tight sm:text-5xl">
+        <h1 className="mt-5 max-w-3xl text-balance font-display text-4xl font-bold leading-[1.05] tracking-tight text-brand-foreground sm:text-5xl md:text-6xl">
           {title}
         </h1>
         {description && (
-          <p className="mt-4 max-w-2xl text-pretty text-lg leading-relaxed text-brand-foreground/75">
+          <p className="mt-5 max-w-2xl text-pretty text-lg leading-relaxed text-brand-foreground/70">
             {description}
           </p>
         )}

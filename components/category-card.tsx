@@ -9,21 +9,21 @@ export function CategoryCard({ category }: { category: Category }) {
   return (
     <Link
       href={`/equipment/${category.slug}`}
-      className="group relative flex min-h-56 flex-col justify-end overflow-hidden rounded-lg border border-border"
+      className="group relative flex min-h-60 flex-col justify-end overflow-hidden rounded-2xl border border-border shadow-sm transition hover:shadow-2xl"
     >
       <Image
         src={category.image || '/placeholder.svg'}
         alt={category.name}
         fill
         sizes="(max-width: 768px) 100vw, 33vw"
-        className="object-cover transition duration-500 group-hover:scale-105"
+        className="object-cover transition duration-700 group-hover:scale-110"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-brand via-brand/60 to-transparent" />
-      <div className="relative p-5">
-        <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+      <div className="relative p-6">
+        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
           {count} in stock
         </span>
-        <h3 className="mt-1 font-display text-xl font-bold text-brand-foreground">
+        <h3 className="mt-2 font-display text-xl font-bold text-brand-foreground">
           {category.name}
         </h3>
         <p className="mt-1 text-sm leading-snug text-brand-foreground/75">{category.blurb}</p>

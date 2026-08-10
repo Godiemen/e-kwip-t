@@ -34,17 +34,18 @@ export function CategoryListing({
   }, [machines, sort])
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 md:px-6 md:py-16">
+    <div className="mx-auto max-w-7xl px-4 py-16 md:px-6 md:py-20">
       {/* Category switcher */}
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="mr-2 hidden text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:inline">Filter:</span>
         {categories.map((c) => (
           <Link
             key={c.slug}
             href={`/equipment/${c.slug}`}
             className={
               c.slug === activeSlug
-                ? 'rounded-md bg-brand px-4 py-2 text-sm font-semibold text-brand-foreground'
-                : 'rounded-md border border-border bg-card px-4 py-2 text-sm font-medium text-muted-foreground transition hover:border-primary hover:text-foreground'
+                ? 'rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-brand-foreground shadow-sm'
+                : 'rounded-lg border border-border bg-card px-5 py-2.5 text-sm font-medium text-muted-foreground transition hover:border-primary hover:bg-accent hover:text-foreground'
             }
           >
             {c.shortName}
@@ -63,7 +64,7 @@ export function CategoryListing({
           <select
             value={sort}
             onChange={(e) => setSort(e.target.value as SortKey)}
-            className="rounded-md border border-border bg-card px-3 py-2 text-sm font-medium text-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/30"
+            className="rounded-lg border border-border bg-card px-4 py-2.5 text-sm font-medium text-foreground outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/30"
           >
             <option value="featured">Featured first</option>
             <option value="price-asc">Price: low to high</option>
@@ -73,13 +74,13 @@ export function CategoryListing({
       </div>
 
       {sorted.length > 0 ? (
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {sorted.map((m) => (
             <MachineCard key={m.slug} machine={m} />
           ))}
         </div>
       ) : (
-        <div className="mt-10 rounded-lg border border-dashed border-border bg-card p-12 text-center">
+        <div className="mt-10 rounded-2xl border border-dashed border-border bg-card p-12 text-center shadow-sm">
           <p className="font-display text-xl font-semibold text-foreground">
             Nothing on the sheet here right now
           </p>
@@ -88,7 +89,7 @@ export function CategoryListing({
           </p>
           <Link
             href="/contact"
-            className="mt-5 inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"
+            className="mt-5 inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition hover:brightness-110"
           >
             Tell us what you need
             <ArrowRight className="h-4 w-4" />
