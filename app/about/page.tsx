@@ -276,7 +276,7 @@ export default function AboutPage() {
                 {/* Tagline */}
                 <div className="mt-6 rounded-xl border-l-4 border-[#6b7c2a] bg-white/5 px-5 py-4 backdrop-blur-sm sm:mt-8 sm:px-7 sm:py-5">
                   <p className="text-base font-semibold leading-relaxed text-[#6b7c2a] sm:text-lg">
-                    E-Kwip-T Sales &amp; Services — Powering Your Productivity.
+                    E-KWIP-T Sales &amp; Service (Pty) Ltd — Powering Your Productivity.
                   </p>
                 </div>
               </div>

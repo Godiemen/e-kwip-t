@@ -25,7 +25,7 @@ export function HomeHero() {
             Heavy equipment/Machinery, bought and sold straight.
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-[#f9f7f2]/70">
-            E-kwip-T sources and sells agricultural, forestry, yellow equipment, mining plant and
+            E-KWIP-T Sales &amp; Service (Pty) Ltd sources and sells agricultural, forestry, yellow equipment, mining plant and
             site support gear across South Africa. Every listing is priced, specced and ready for an
             on-site inspection — no back-and-forth required.
           </p>
