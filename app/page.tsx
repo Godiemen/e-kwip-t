@@ -186,6 +186,86 @@ export default async function HomePage() {
           </div>
         </section>
 
+        {/* Founder Introduction */}
+        <section className="relative overflow-hidden bg-[#202e12] py-20 md:py-28">
+          <div className="absolute inset-0 opacity-5">
+            <div className="h-full w-full bg-gradient-to-br from-[#6b7c2a] to-transparent" />
+          </div>
+          <div className="relative mx-auto max-w-7xl px-4 md:px-6">
+            <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+              {/* Left: founder photo with floating badge */}
+              <div className="relative order-2 mx-auto w-full max-w-sm lg:order-1 lg:mx-0 lg:max-w-none">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
+                  <Image
+                    src="/123744.jpg"
+                    alt="Terrence Carey, Co-Founder of E-Kwip-T Sales & Services (Pty) Ltd"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 80vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#202e12]/40 via-transparent to-transparent" />
+                </div>
+                {/* Floating experience badge */}
+                <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 rounded-xl bg-[#6b7c2a] px-6 py-3 shadow-xl lg:left-auto lg:right-4 lg:translate-x-0">
+                  <p className="font-display text-3xl font-bold text-[#f9f7f2]">30+</p>
+                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-[#f9f7f2]/80">Years Experience</p>
+                </div>
+                {/* Decorative accents */}
+                <div className="absolute -right-4 -top-4 -z-10 h-28 w-28 rounded-full bg-[#6b7c2a]/15" />
+                <div className="absolute -bottom-8 -left-4 -z-10 h-36 w-36 rounded-3xl bg-[#4b6572]/15" />
+              </div>
+
+              {/* Right: founder bio */}
+              <div className="order-1 min-w-0 lg:order-2">
+                <div className="flex items-center gap-3">
+                  <span className="h-px w-12 bg-[#6b7c2a]" />
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6b7c2a]">Founder Introduction</span>
+                </div>
+                <h2 className="mt-5 break-words font-display text-3xl font-bold leading-tight text-[#f9f7f2] sm:text-4xl md:text-5xl">
+                  Meet Terrence Carey
+                </h2>
+                <p className="mt-3 text-base font-semibold text-[#f9f7f2]/70 sm:text-lg">
+                  Co-Founder of E-Kwip-T Sales &amp; Services (Pty) Ltd
+                </p>
+
+                <div className="mt-6 space-y-4 sm:mt-8 sm:space-y-5">
+                  <p className="text-sm leading-relaxed text-[#f9f7f2]/70 sm:text-base">
+                    Born in Zambia and raised in KwaZulu-Natal, Terrence Carey brings over 30 years of
+                    mechanical and marine engineering experience to the machinery industry. After
+                    relocating to KZN at a young age, he grew up in the Upper Highway area before his
+                    family eventually settled in Makabathini near Camperdown.
+                  </p>
+                  <p className="text-sm leading-relaxed text-[#f9f7f2]/70 sm:text-base">
+                    Influenced by his mother&apos;s involvement in the equestrian world, Terrence
+                    developed a strong connection to rural communities and the industries they support.
+                  </p>
+                  <p className="text-sm leading-relaxed text-[#f9f7f2]/70 sm:text-base">
+                    As Co-Founder of E-Kwip-T Sales &amp; Services (Pty) Ltd, established in 2021,
+                    Terrence specialises in sourcing and trading agricultural, industrial, forestry,
+                    mining, and construction equipment, supported by extensive engineering knowledge
+                    and practical experience.
+                  </p>
+                </div>
+
+                {/* Tagline */}
+                <div className="mt-6 rounded-xl border-l-4 border-[#6b7c2a] bg-white/5 px-5 py-4 backdrop-blur-sm sm:mt-8 sm:px-7 sm:py-5">
+                  <p className="text-base font-semibold leading-relaxed text-[#6b7c2a] sm:text-lg">
+                    E-Kwip-T Sales &amp; Services — Powering Your Productivity.
+                  </p>
+                </div>
+
+                <Link
+                  href="/about"
+                  className="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-[#6b7c2a] px-7 py-3.5 font-display font-semibold text-[#f9f7f2] shadow-lg transition hover:bg-[#5a6a22] sm:mt-8"
+                >
+                  Read Full Story
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Sell band */}
         <section className="bg-[#4b6572] py-16 md:py-20">
           <div className="mx-auto flex max-w-7xl flex-col items-start gap-6 px-4 md:flex-row md:items-center md:justify-between md:px-6">

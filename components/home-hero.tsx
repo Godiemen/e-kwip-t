@@ -5,8 +5,8 @@ export function HomeHero() {
   return (
     <section className="relative min-h-[640px] overflow-hidden bg-[#3a4d45]">
       <Image
-        src="/machines/construction-site-hero.png"
-        alt="Tractor ploughing a field at sunset"
+        src="/123752.jpg"
+        alt="E-kwip-T heavy equipment on site"
         fill
         priority
         sizes="100vw"
