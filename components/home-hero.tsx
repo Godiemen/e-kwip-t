@@ -29,16 +29,16 @@ export function HomeHero() {
             site support gear across South Africa. Every listing is priced, specced and ready for an
             on-site inspection — no back-and-forth required.
           </p>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-10 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
             <Link
               href="/equipment"
-              className="inline-flex items-center rounded-lg bg-[#6b7c2a] px-7 py-3.5 font-display font-semibold text-[#f9f7f2] shadow-lg transition hover:bg-[#5a6a22]"
+              className="inline-flex items-center justify-center rounded-lg bg-[#6b7c2a] px-7 py-3.5 font-display font-semibold text-[#f9f7f2] shadow-lg transition hover:bg-[#5a6a22]"
             >
               Browse Shop
             </Link>
             <Link
               href="/about"
-              className="inline-flex items-center rounded-lg border-2 border-[#f9f7f2]/30 px-7 py-3.5 font-display font-semibold text-[#f9f7f2] backdrop-blur-sm transition hover:bg-[#f9f7f2]/10"
+              className="inline-flex items-center justify-center rounded-lg border-2 border-[#f9f7f2]/30 px-7 py-3.5 font-display font-semibold text-[#f9f7f2] backdrop-blur-sm transition hover:bg-[#f9f7f2]/10"
             >
               About Us
             </Link>

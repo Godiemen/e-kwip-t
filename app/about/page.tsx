@@ -72,17 +72,17 @@ export default function AboutPage() {
               <p className="mt-4 max-w-lg text-base leading-relaxed text-[#f9f7f2]/70 md:text-lg">
                 Humble beginnings, honest dealing — sourcing and selling equipment across South Africa.
               </p>
-              <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-10 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
                 <a
                   href="/equipment"
-                  className="inline-flex items-center gap-2 rounded-md bg-[#6b7c2a] px-7 py-3.5 font-display font-semibold text-[#f9f7f2] shadow-lg transition hover:bg-[#5a6a22]"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#6b7c2a] px-7 py-3.5 font-display font-semibold text-[#f9f7f2] shadow-lg transition hover:bg-[#5a6a22]"
                 >
                   Browse Our Stock
                   <ArrowRight className="h-4 w-4" />
                 </a>
                 <a
                   href="/contact"
-                  className="inline-flex items-center gap-2 rounded-md border-2 border-[#f9f7f2]/30 px-7 py-3.5 font-display font-semibold text-[#f9f7f2] backdrop-blur-sm transition hover:bg-[#f9f7f2]/10"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-[#f9f7f2]/30 px-7 py-3.5 font-display font-semibold text-[#f9f7f2] backdrop-blur-sm transition hover:bg-[#f9f7f2]/10"
                 >
                   Get In Touch
                 </a>
@@ -177,17 +177,17 @@ export default function AboutPage() {
                   </p>
                 </div>
 
-                <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+                <div className="mt-10 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
                   <a
                     href="/equipment"
-                    className="inline-flex items-center gap-2 rounded-lg bg-[#6b7c2a] px-7 py-3.5 font-display font-semibold text-[#f9f7f2] shadow-md transition hover:bg-[#5a6a22] hover:shadow-lg"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#6b7c2a] px-7 py-3.5 font-display font-semibold text-[#f9f7f2] shadow-md transition hover:bg-[#5a6a22] hover:shadow-lg"
                   >
                     Browse Our Stock
                     <ArrowRight className="h-4 w-4" />
                   </a>
                   <a
                     href="/contact"
-                    className="inline-flex items-center gap-2 rounded-lg border-2 border-[#6b7c2a] px-7 py-3.5 font-display font-semibold text-[#6b7c2a] transition hover:bg-[#6b7c2a] hover:text-[#f9f7f2]"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-[#6b7c2a] px-7 py-3.5 font-display font-semibold text-[#6b7c2a] transition hover:bg-[#6b7c2a] hover:text-[#f9f7f2]"
                   >
                     Get In Touch
                   </a>
@@ -293,17 +293,17 @@ export default function AboutPage() {
             <p className="mx-auto mt-5 max-w-xl text-lg text-[#f9f7f2]/80">
               Whether you are buying, selling, or just looking for advice — we are here to help.
             </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <div className="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
               <a
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-lg bg-[#6b7c2a] px-8 py-4 font-display font-semibold text-[#f9f7f2] shadow-lg transition hover:bg-[#5a6a22]"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#6b7c2a] px-8 py-4 font-display font-semibold text-[#f9f7f2] shadow-lg transition hover:bg-[#5a6a22]"
               >
                 Contact us
                 <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="/equipment"
-                className="inline-flex items-center gap-2 rounded-lg border-2 border-[#f9f7f2]/30 px-8 py-4 font-display font-semibold text-[#f9f7f2] backdrop-blur-sm transition hover:bg-[#f9f7f2]/10"
+                className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-[#f9f7f2]/30 px-8 py-4 font-display font-semibold text-[#f9f7f2] backdrop-blur-sm transition hover:bg-[#f9f7f2]/10"
               >
                 Browse Stock
               </a>
