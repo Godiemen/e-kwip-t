@@ -1,35 +1,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { ShieldCheck, Tag, Truck, Handshake, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { HomeHero } from '@/components/home-hero'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { MachineSlider } from '@/components/machine-slider'
 import { CategorySlider } from '@/components/category-slider'
+import { TrustSlider } from '@/components/trust-slider'
 import { getCategories, getFeaturedMachines } from '@/lib/data'
-
-const trust = [
-  {
-    icon: ShieldCheck,
-    title: 'Inspected Stock',
-    body: 'Every listing is checked and specced before it goes on the sheet, so what you see is what you are quoted on.',
-  },
-  {
-    icon: Tag,
-    title: 'Straight Pricing',
-    body: 'Listed prices or POA on request — no inflated "negotiable" numbers to wade through.',
-  },
-  {
-    icon: Truck,
-    title: 'Nationwide Delivery',
-    body: 'We arrange transport to any province, quoted separately based on machine and distance.',
-  },
-  {
-    icon: Handshake,
-    title: 'Trade-Ins Considered',
-    body: 'Selling to upgrade? We will value your current machine against your next purchase.',
-  },
-]
 
 export const revalidate = 0
 
@@ -183,21 +161,8 @@ export default async function HomePage() {
                 Buying equipment shouldn&apos;t be a gamble
               </h2>
             </div>
-            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {trust.map((t) => (
-                <div
-                  key={t.title}
-                  className="group rounded-2xl border border-[#d7d4c9] bg-white p-7 shadow-sm transition hover:border-[#6b7c2a] hover:shadow-xl"
-                >
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#efede5] text-[#6b7c2a] transition group-hover:bg-[#6b7c2a] group-hover:text-[#f9f7f2]">
-                    <t.icon className="h-6 w-6" />
-                  </span>
-                  <h3 className="mt-5 font-display text-lg font-semibold text-[#202e12]">
-                    {t.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-[#5c6b52]">{t.body}</p>
-                </div>
-              ))}
+            <div className="mt-14">
+              <TrustSlider />
             </div>
           </div>
         </section>
