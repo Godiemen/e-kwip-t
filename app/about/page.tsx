@@ -53,7 +53,7 @@ export default function AboutPage() {
             fill
             priority
             sizes="100vw"
-            className="object-cover"
+            className="object-cover object-[50%_20%]"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-[#202e12]/90 via-[#202e12]/65 to-black/40" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#202e12]/70 via-transparent to-transparent" />

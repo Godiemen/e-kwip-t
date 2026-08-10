@@ -10,7 +10,7 @@ export function HomeHero() {
         fill
         priority
         sizes="100vw"
-        className="object-cover"
+        className="object-cover object-[50%_20%]"
       />
       <div className="absolute inset-0 bg-gradient-to-br from-[#202e12]/90 via-[#202e12]/65 to-black/40" />
       <div className="absolute inset-0 bg-gradient-to-t from-[#202e12]/60 via-transparent to-transparent" />
@@ -24,11 +24,6 @@ export function HomeHero() {
           <h1 className="mt-6 break-words font-display text-4xl font-bold leading-[1.08] text-[#f9f7f2] sm:text-5xl md:text-6xl lg:text-7xl">
             Heavy equipment/Machinery, bought and sold straight.
           </h1>
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-[#f9f7f2]/70">
-            E-KWIP-T Sales &amp; Service (Pty) Ltd sources and sells agricultural, forestry, yellow equipment, mining plant and
-            site support gear across South Africa. Every listing is priced, specced and ready for an
-            on-site inspection — no back-and-forth required.
-          </p>
           <div className="mt-10 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
             <Link
               href="/equipment"
