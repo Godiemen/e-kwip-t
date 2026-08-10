@@ -4,7 +4,7 @@ import { ShieldCheck, Tag, Truck, Handshake, ArrowRight } from 'lucide-react'
 import { HomeHero } from '@/components/home-hero'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
-import { MachineCard } from '@/components/machine-card'
+import { MachineSlider } from '@/components/machine-slider'
 import { CategorySlider } from '@/components/category-slider'
 import { getCategories, getFeaturedMachines } from '@/lib/data'
 
@@ -146,10 +146,8 @@ export default async function HomePage() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {featured.map((m) => (
-                <MachineCard key={m.slug} machine={m} />
-              ))}
+            <div className="mt-12">
+              <MachineSlider machines={featured} />
             </div>
           </div>
         </section>
