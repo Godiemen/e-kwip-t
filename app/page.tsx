@@ -115,7 +115,7 @@ export default async function HomePage() {
                 Popular Categories
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-[#5c6b52]">
-                Five categories, one yard sheet. Pick a category to see current stock, specs and
+                Six categories, one yard sheet. Pick a category to see current stock, specs and
                 asking prices.
               </p>
             </div>
