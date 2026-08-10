@@ -78,25 +78,43 @@ export default async function HomePage() {
                   Browse Shop
                 </Link>
               </div>
-              <div className="grid gap-5 sm:grid-cols-2">
-                <div className="relative aspect-square overflow-hidden rounded-2xl border-4 border-white shadow-2xl">
+              {/* Image collage */}
+              <div className="relative mx-auto w-full max-w-md pb-16 pr-6 sm:max-w-lg lg:max-w-none">
+                {/* Main image */}
+                <div className="relative aspect-[4/3] w-[86%] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-black/5">
                   <Image
                     src="/machines/combine-harvester.png"
                     alt="Combine harvester for sale"
                     fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 25vw"
+                    className="object-cover transition duration-700 hover:scale-105"
+                    sizes="(max-width: 1024px) 90vw, 45vw"
                   />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#202e12]/25 via-transparent to-transparent" />
                 </div>
-                <div className="relative aspect-square overflow-hidden rounded-2xl border-4 border-white shadow-2xl sm:mt-10">
+
+                {/* Overlapping secondary image */}
+                <div className="absolute bottom-0 right-0 aspect-[4/3] w-[58%] overflow-hidden rounded-2xl border-[6px] border-[#f9f7f2] shadow-2xl">
                   <Image
                     src="/machines/jcb-3cx-backhoe.png"
                     alt="JCB backhoe loader for sale"
                     fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 25vw"
+                    className="object-cover transition duration-700 hover:scale-105"
+                    sizes="(max-width: 1024px) 55vw, 28vw"
                   />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#202e12]/25 via-transparent to-transparent" />
                 </div>
+
+                {/* Floating badge */}
+                <div className="absolute left-0 top-4 rounded-xl bg-[#6b7c2a] px-4 py-2.5 shadow-xl sm:px-5 sm:py-3">
+                  <p className="font-display text-xl font-bold leading-none text-[#f9f7f2] sm:text-2xl">2021</p>
+                  <p className="mt-1 text-[0.6rem] font-semibold uppercase tracking-[0.15em] text-[#f9f7f2]/85">
+                    Established
+                  </p>
+                </div>
+
+                {/* Decorative accents */}
+                <div className="absolute -right-2 -top-4 -z-10 h-24 w-24 rounded-full bg-[#6b7c2a]/10" />
+                <div className="absolute bottom-8 -left-4 -z-10 h-32 w-32 rounded-3xl bg-[#4b6572]/10" />
               </div>
             </div>
           </div>
