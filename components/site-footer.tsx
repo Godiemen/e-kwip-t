@@ -94,7 +94,7 @@ export function SiteFooter() {
 
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-3 px-4 py-5 text-center text-xs text-[#f9f7f2]/55 md:flex-row md:justify-between md:px-6">
-          <p>© {new Date().getFullYear()} E-kwip-T Sales &amp; Service. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} E-kwip-T Sales &amp; Service (Pty) Ltd. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <Link href="/cookies" className="transition hover:text-[#f9f7f2]">Cookie Policy</Link>
             <Link href="/terms" className="transition hover:text-[#f9f7f2]">Terms &amp; Conditions</Link>

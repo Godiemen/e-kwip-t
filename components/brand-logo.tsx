@@ -20,9 +20,9 @@ export function BrandLogo({
       />
       <span className="flex flex-col leading-none">
         <span className={cn('font-display text-lg font-bold tracking-tight', tone === 'light' ? 'text-[#f9f7f2]' : 'text-[#6b7c2a]')}>
-          E-KWIP-T
+          E-KWIP-T (Pty) Ltd
         </span>
-        <span className={cn('text-[0.65rem] font-semibold uppercase tracking-[0.2em]', tone === 'light' ? 'text-[#f9f7f2]/80' : 'text-[#6b7c2a]/70')}>
+        <span className={cn('mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em]', tone === 'light' ? 'text-[#f9f7f2]/80' : 'text-[#6b7c2a]/70')}>
           Sales &amp; Service
         </span>
       </span>

@@ -36,7 +36,7 @@ export const CONTACT = {
   displayPhone: '082 636 5471',
   waNumber: '27826365471',
   email: 'sales@ekwipt.co.za',
-  company: 'E-kwip-T Sales and Service Pty Ltd',
+  company: 'E-kwip-T Sales and Service (Pty) Ltd',
 }
 
 export function waLink(machineName?: string): string {
