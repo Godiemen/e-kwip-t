@@ -34,7 +34,7 @@ export function PageHero({
           <div className="absolute inset-0 bg-gradient-to-t from-[#202e12]/60 via-transparent to-transparent" />
         </>
       )}
-      <div className="relative mx-auto max-w-7xl px-4 py-20 md:px-6 md:py-28">
+      <div className="relative mx-auto w-full min-w-0 max-w-7xl px-4 py-16 md:px-6 md:py-28">
         {breadcrumbs && (
           <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center gap-1 text-sm text-brand-foreground/50">
             {breadcrumbs.map((b, i) => (
@@ -57,7 +57,7 @@ export function PageHero({
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">{eyebrow}</span>
           </div>
         )}
-        <h1 className="mt-5 max-w-3xl text-balance font-display text-4xl font-bold leading-[1.05] tracking-tight text-brand-foreground sm:text-5xl md:text-6xl">
+        <h1 className="mt-5 max-w-3xl break-words text-balance font-display text-4xl font-bold leading-[1.08] tracking-tight text-brand-foreground sm:text-5xl md:text-6xl">
           {title}
         </h1>
         {description && (

@@ -28,13 +28,13 @@ export default function ContactPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-br from-[#202e12]/90 via-[#202e12]/65 to-black/40" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#202e12]/60 via-transparent to-transparent" />
-          <div className="relative mx-auto flex min-h-[480px] max-w-7xl items-center px-4 md:px-6">
-            <div className="max-w-2xl py-24">
+          <div className="relative mx-auto flex min-h-[480px] w-full max-w-7xl items-center px-4 md:px-6">
+            <div className="w-full min-w-0 max-w-2xl py-20 md:py-24">
               <div className="flex items-center gap-3">
                 <span className="h-px w-12 bg-[#6b7c2a]" />
                 <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f9f7f2]/60">We&apos;re Here To Help</span>
               </div>
-              <h1 className="mt-6 font-display text-5xl font-bold leading-[1.05] text-[#f9f7f2] md:text-6xl lg:text-7xl">
+              <h1 className="mt-6 break-words font-display text-4xl font-bold leading-[1.08] text-[#f9f7f2] sm:text-5xl md:text-6xl lg:text-7xl">
                 Contact Us
               </h1>
               <p className="mt-5 max-w-lg text-base leading-relaxed text-[#f9f7f2]/70 md:text-lg">
