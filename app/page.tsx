@@ -57,7 +57,7 @@ export default async function HomePage() {
                   Equipment &amp; Machinery Sales · South Africa
                 </h2>
                 <p className="mt-6 leading-relaxed text-foreground/80">
-                  Welcome to E-kwip-T Sales and Service (Pty) Ltd. We are an owner-managed business sourcing
+                  Welcome to E-KWIP-T Sales &amp; Service (Pty) Ltd. We are an owner-managed business sourcing
                   and selling agricultural, forestry, yellow equipment, mining plant and site
                   support gear across South Africa. Whether you are looking for a single tine ripper
                   or a rigid dump truck, we will find the best solution for you. We trade in new and

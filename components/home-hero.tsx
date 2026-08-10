@@ -19,7 +19,7 @@ export function HomeHero() {
         <div className="w-full min-w-0 max-w-2xl py-24 md:py-28">
           <div className="flex items-center gap-3">
             <span className="h-px w-12 bg-[#6b7c2a]" />
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f9f7f2]/60">E-kwip-T (Pty) Ltd Sales &amp; Service</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f9f7f2]/60">E-KWIP-T Sales &amp; Service (Pty) Ltd</span>
           </div>
           <h1 className="mt-6 break-words font-display text-4xl font-bold leading-[1.08] text-[#f9f7f2] sm:text-5xl md:text-6xl lg:text-7xl">
             Heavy equipment/Machinery, bought and sold straight.

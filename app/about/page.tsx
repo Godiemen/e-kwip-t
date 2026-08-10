@@ -67,7 +67,7 @@ export default function AboutPage() {
                 About Us
               </h1>
               <p className="mt-5 text-xl font-semibold text-[#f9f7f2]/95 md:text-2xl">
-                E-Kwip-T Sales and Services (Pty) Ltd
+                E-KWIP-T Sales &amp; Service (Pty) Ltd
               </p>
               <p className="mt-4 max-w-lg text-base leading-relaxed text-[#f9f7f2]/70 md:text-lg">
                 Humble beginnings, honest dealing — sourcing and selling equipment across South Africa.
@@ -134,7 +134,7 @@ export default function AboutPage() {
 
                 <div className="mt-8 space-y-6">
                   <p className="text-lg leading-relaxed text-foreground/80">
-                    E-Kwip-T Sales and Services (Pty) Ltd didn&apos;t start with a business plan or a
+                    E-KWIP-T Sales &amp; Service (Pty) Ltd didn&apos;t start with a business plan or a
                     boardroom pitch — it started with a simple favour. A tenant of ours mentioned he
                     was looking for a decent tractor, and asked if we could help him find one. We took
                     it seriously, did the legwork, and found him exactly what he needed.
