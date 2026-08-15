@@ -6,7 +6,7 @@ import { PageHero } from '@/components/page-hero'
 export const metadata: Metadata = {
   title: 'Terms & Conditions',
   description:
-    'Terms and conditions governing the use of the E-kwip-T Sales and Service website and any transactions arising from it.',
+    'Terms and conditions governing the use of the E-KWIP-t Sales and Service website and any transactions arising from it.',
 }
 
 export default function TermsPage() {
@@ -31,7 +31,7 @@ export default function TermsPage() {
               <div>
                 <h2 className="font-display text-2xl font-bold text-[#5a6a22]">1. Introduction</h2>
                 <p className="mt-3 leading-relaxed text-[#5c6b52]">
-                  These terms and conditions govern your use of the E-kwip-T Sales and Service
+                  These terms and conditions govern your use of the E-KWIP-t Sales and Service
                   website located at e-kwip-t-zeta.vercel.app (the &quot;Site&quot;). By accessing or
                   using the Site, you agree to be bound by these terms. If you do not agree with any
                   part of these terms, please do not use the Site.
@@ -47,7 +47,7 @@ export default function TermsPage() {
                   &quot;POA&quot; (Price on Application) require a direct enquiry for pricing.
                 </p>
                 <p className="mt-3 leading-relaxed text-[#5c6b52]">
-                  E-kwip-T Sales and Service reserves the right to withdraw or modify any listing at
+                  E-KWIP-t Sales and Service reserves the right to withdraw or modify any listing at
                   any time without notice. A listing does not constitute a binding offer to sell.
                 </p>
               </div>
@@ -73,7 +73,7 @@ export default function TermsPage() {
               <div>
                 <h2 className="font-display text-2xl font-bold text-[#5a6a22]">5. Trade-ins</h2>
                 <p className="mt-3 leading-relaxed text-[#5c6b52]">
-                  Trade-in valuations are provided at the sole discretion of E-kwip-T Sales and
+                  Trade-in valuations are provided at the sole discretion of E-KWIP-t Sales and
                   Service and are subject to physical inspection of the equipment being traded in.
                 </p>
               </div>
@@ -82,7 +82,7 @@ export default function TermsPage() {
                 <h2 className="font-display text-2xl font-bold text-[#5a6a22]">6. Intellectual property</h2>
                 <p className="mt-3 leading-relaxed text-[#5c6b52]">
                   All content on this Site, including text, images, logos, and design elements, is
-                  the property of E-kwip-T Sales and Service or its licensors and may not be
+                  the property of E-KWIP-t Sales and Service or its licensors and may not be
                   reproduced, distributed, or used for commercial purposes without prior written
                   consent.
                 </p>
@@ -91,7 +91,7 @@ export default function TermsPage() {
               <div>
                 <h2 className="font-display text-2xl font-bold text-[#5a6a22]">7. Limitation of liability</h2>
                 <p className="mt-3 leading-relaxed text-[#5c6b52]">
-                  E-kwip-T Sales and Service shall not be liable for any direct, indirect,
+                  E-KWIP-t Sales and Service shall not be liable for any direct, indirect,
                   incidental, or consequential damages arising from the use of this Site or reliance
                   on any information displayed herein. Equipment is sold &quot;as is, where is&quot;
                   unless otherwise agreed in writing.

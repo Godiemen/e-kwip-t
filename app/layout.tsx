@@ -19,11 +19,11 @@ const oswald = Oswald({
 
 export const metadata: Metadata = {
   title: {
-    default: 'E-kwip-T Sales and Service (Pty) Ltd | Equipment & Machinery Sales',
-    template: '%s | E-kwip-T Sales and Service (Pty) Ltd',
+    default: 'E-KWIP-t Sales and Service (Pty) Ltd | Equipment & Machinery Sales',
+    template: '%s | E-KWIP-t Sales and Service (Pty) Ltd',
   },
   description:
-    'E-kwip-T Sales and Service (Pty) Ltd — agricultural, forestry, yellow equipment, mining plant and support machinery for sale across South Africa.',
+    'E-KWIP-t Sales and Service (Pty) Ltd — agricultural, forestry, yellow equipment, mining plant and support machinery for sale across South Africa.',
   icons: {
     icon: '/123690 (1).jpg',
     shortcut: '/123690 (1).jpg',

@@ -6,9 +6,9 @@ import { SiteFooter } from '@/components/site-footer'
 import { CONTACT, waLink } from '@/lib/products'
 
 export const metadata: Metadata = {
-  title: 'Contact Us | E-kwip-T Sales and Service',
+  title: 'Contact Us | E-KWIP-t Sales and Service',
   description:
-    'Get in touch with E-kwip-T Sales and Service. Call or WhatsApp Terrence on 082 636 5471 or email sales@ekwipt.co.za.',
+    'Get in touch with E-KWIP-t Sales and Service. Call or WhatsApp Terrence on 082 636 5471 or email sales@ekwipt.co.za.',
 }
 
 export default function ContactPage() {

@@ -5,11 +5,18 @@ import Image from 'next/image'
 import { MapPin, Clock, ArrowUpRight, MessageCircle } from 'lucide-react'
 import type { Machine } from '@/lib/products'
 import { getCategory, waOrderLink } from '@/lib/products'
+import { cn } from '@/lib/utils'
 
-export function MachineCard({ machine }: { machine: Machine }) {
+export function MachineCard({ machine, variant = 'light' }: { machine: Machine; variant?: 'light' | 'dark' }) {
   const category = getCategory(machine.category)
+  const dark = variant === 'dark'
   return (
-    <div className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition hover:border-primary hover:shadow-2xl">
+    <div className={cn(
+      'group flex flex-col overflow-hidden rounded-2xl border shadow-sm transition hover:shadow-2xl',
+      dark
+        ? 'border-white/10 bg-white/5 backdrop-blur-sm hover:border-[#6b7c2a]'
+        : 'border-border bg-card hover:border-primary'
+    )}>
       <Link href={`/stock/${machine.slug}`} className="block">
         <div className="relative aspect-[4/3] overflow-hidden bg-muted">
           <Image
@@ -27,12 +34,18 @@ export function MachineCard({ machine }: { machine: Machine }) {
 
       <div className="flex flex-1 flex-col p-5">
         <Link href={`/stock/${machine.slug}`}>
-          <h3 className="font-display text-lg font-semibold leading-tight text-card-foreground transition group-hover:text-primary">
+          <h3 className={cn(
+            'font-display text-lg font-semibold leading-tight transition group-hover:text-primary',
+            dark ? 'text-[#f9f7f2]' : 'text-card-foreground'
+          )}>
             {machine.name}
           </h3>
         </Link>
 
-        <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
+        <div className={cn(
+          'mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs',
+          dark ? 'text-[#f9f7f2]/50' : 'text-muted-foreground'
+        )}>
           <span className="inline-flex items-center gap-1">
             <Clock className="h-3.5 w-3.5" /> {machine.hours === 'N/A' ? machine.year : `${machine.hours} hrs`}
           </span>
@@ -41,11 +54,20 @@ export function MachineCard({ machine }: { machine: Machine }) {
           </span>
         </div>
 
-        <div className="mt-4 flex items-end justify-between border-t border-border pt-4">
+        <div className={cn(
+          'mt-4 flex items-end justify-between border-t pt-4',
+          dark ? 'border-white/10' : 'border-border'
+        )}>
           <div>
-            <span className="font-display text-xl font-bold text-foreground">{machine.price}</span>
+            <span className={cn(
+              'font-display text-xl font-bold',
+              dark ? 'text-[#f9f7f2]' : 'text-foreground'
+            )}>{machine.price}</span>
             {machine.vat && (
-              <span className="ml-1 text-xs text-muted-foreground">{machine.vat}</span>
+              <span className={cn(
+                'ml-1 text-xs',
+                dark ? 'text-[#f9f7f2]/50' : 'text-muted-foreground'
+              )}>{machine.vat}</span>
             )}
           </div>
           <Link

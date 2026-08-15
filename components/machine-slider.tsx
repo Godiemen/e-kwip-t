@@ -4,10 +4,12 @@ import { useEffect, useState, useCallback } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { MachineCard } from './machine-card'
 import type { Machine } from '@/lib/products'
+import { cn } from '@/lib/utils'
 
 const AUTO_SLIDE_MS = 6000
 
-export function MachineSlider({ machines }: { machines: Machine[] }) {
+export function MachineSlider({ machines, variant = 'light' }: { machines: Machine[]; variant?: 'light' | 'dark' }) {
+  const dark = variant === 'dark'
   const [page, setPage] = useState(0)
   const [itemsPerView, setItemsPerView] = useState(1)
   const [paused, setPaused] = useState(false)
@@ -56,7 +58,10 @@ export function MachineSlider({ machines }: { machines: Machine[] }) {
         type="button"
         aria-label="Previous machines"
         onClick={prev}
-        className="absolute -left-3 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg ring-1 border border-[#d7d4c9] transition hover:bg-[#6b7c2a] hover:text-[#f9f7f2] md:flex"
+        className={cn(
+          'absolute -left-3 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full shadow-lg ring-1 border transition hover:bg-[#6b7c2a] hover:text-[#f9f7f2] md:flex',
+          dark ? 'border-white/10 bg-white/10 text-[#f9f7f2]' : 'border-[#d7d4c9] bg-white text-[#202e12]'
+        )}
         style={{ width: 44, height: 44 }}
       >
         <ChevronLeft className="h-6 w-6" />
@@ -65,7 +70,10 @@ export function MachineSlider({ machines }: { machines: Machine[] }) {
         type="button"
         aria-label="Next machines"
         onClick={next}
-        className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg ring-1 border border-[#d7d4c9] transition hover:bg-[#6b7c2a] hover:text-[#f9f7f2] md:flex"
+        className={cn(
+          'absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full shadow-lg ring-1 border transition hover:bg-[#6b7c2a] hover:text-[#f9f7f2] md:flex',
+          dark ? 'border-white/10 bg-white/10 text-[#f9f7f2]' : 'border-[#d7d4c9] bg-white text-[#202e12]'
+        )}
         style={{ width: 44, height: 44 }}
       >
         <ChevronRight className="h-6 w-6" />
@@ -83,7 +91,7 @@ export function MachineSlider({ machines }: { machines: Machine[] }) {
               className="shrink-0 px-2"
               style={{ width: `${100 / itemsPerView}%` }}
             >
-              <MachineCard machine={machine} />
+              <MachineCard machine={machine} variant={variant} />
             </div>
           ))}
         </div>
@@ -95,7 +103,10 @@ export function MachineSlider({ machines }: { machines: Machine[] }) {
           type="button"
           aria-label="Previous machines"
           onClick={prev}
-          className="inline-flex items-center justify-center rounded-full bg-[#efede5] p-2 text-[#6b7c2a] transition hover:bg-[#6b7c2a] hover:text-[#f9f7f2] md:hidden"
+          className={cn(
+            'inline-flex items-center justify-center rounded-full p-2 text-[#6b7c2a] transition hover:bg-[#6b7c2a] hover:text-[#f9f7f2] md:hidden',
+            dark ? 'bg-white/10' : 'bg-[#efede5]'
+          )}
         >
           <ChevronLeft className="h-5 w-5" />
         </button>
@@ -118,7 +129,10 @@ export function MachineSlider({ machines }: { machines: Machine[] }) {
           type="button"
           aria-label="Next machines"
           onClick={next}
-          className="inline-flex items-center justify-center rounded-full bg-[#efede5] p-2 text-[#6b7c2a] transition hover:bg-[#6b7c2a] hover:text-[#f9f7f2] md:hidden"
+          className={cn(
+            'inline-flex items-center justify-center rounded-full p-2 text-[#6b7c2a] transition hover:bg-[#6b7c2a] hover:text-[#f9f7f2] md:hidden',
+            dark ? 'bg-white/10' : 'bg-[#efede5]'
+          )}
         >
           <ChevronRight className="h-5 w-5" />
         </button>

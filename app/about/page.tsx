@@ -5,9 +5,9 @@ import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 
 export const metadata: Metadata = {
-  title: 'About Us | E-kwip-T Sales and Service',
+  title: 'About Us | E-KWIP-t Sales and Service',
   description:
-    'E-Kwip-T Sales and Services (Pty) Ltd — humble beginnings, honest dealing. We pride ourselves on Honesty, Integrity, Transparency and a service second to none.',
+    'E-KWIP-t Sales and Services (Pty) Ltd — humble beginnings, honest dealing. We pride ourselves on Honesty, Integrity, Transparency and a service second to none.',
 }
 
 const values = [
@@ -49,7 +49,7 @@ export default function AboutPage() {
         <section className="relative min-h-[600px] overflow-hidden bg-[#3a4d45]">
           <Image
             src="/123752.jpg"
-            alt="E-kwip-T heavy equipment on site"
+            alt="E-KWIP-t heavy equipment on site"
             fill
             priority
             sizes="100vw"
@@ -61,13 +61,13 @@ export default function AboutPage() {
             <div className="w-full min-w-0 max-w-2xl py-24 md:py-28">
               <div className="flex items-center gap-3">
                 <span className="h-px w-12 bg-[#6b7c2a]" />
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f9f7f2]/60">About E-kwip-T</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f9f7f2]/60">About E-KWIP-t</span>
               </div>
               <h1 className="mt-6 break-words font-display text-4xl font-bold leading-[1.08] text-[#f9f7f2] sm:text-5xl md:text-6xl lg:text-7xl">
                 About Us
               </h1>
               <p className="mt-5 text-xl font-semibold text-[#f9f7f2]/95 md:text-2xl">
-                E-KWIP-T Sales &amp; Service (Pty) Ltd
+                E-KWIP-t Sales &amp; Service (Pty) Ltd
               </p>
               <p className="mt-4 max-w-lg text-base leading-relaxed text-[#f9f7f2]/70 md:text-lg">
                 Humble beginnings, honest dealing — sourcing and selling equipment across South Africa.
@@ -134,7 +134,7 @@ export default function AboutPage() {
 
                 <div className="mt-8 space-y-6">
                   <p className="text-lg leading-relaxed text-foreground/80">
-                    E-KWIP-T Sales &amp; Service (Pty) Ltd didn&apos;t start with a business plan or a
+                    E-KWIP-t Sales &amp; Service (Pty) Ltd didn&apos;t start with a business plan or a
                     boardroom pitch — it started with a simple favour. A tenant of ours mentioned he
                     was looking for a decent tractor, and asked if we could help him find one. We took
                     it seriously, did the legwork, and found him exactly what he needed.
@@ -209,7 +209,7 @@ export default function AboutPage() {
                 <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
                   <Image
                     src="/123744.jpg"
-                    alt="Terrence Carey, Co-Founder of E-Kwip-T Sales & Services (Pty) Ltd"
+                    alt="Terrence Carey, Co-Founder of E-KWIP-t Sales & Services (Pty) Ltd"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 80vw, 50vw"
@@ -236,7 +236,7 @@ export default function AboutPage() {
                   Terrence Carey
                 </h2>
                 <p className="mt-3 text-base font-semibold text-[#f9f7f2]/70 sm:text-lg">
-                  Co-Founder of E-Kwip-T Sales &amp; Services (Pty) Ltd
+                  Co-Founder of E-KWIP-t Sales &amp; Services (Pty) Ltd
                 </p>
 
                 <div className="mt-6 space-y-4 sm:mt-8 sm:space-y-5">
@@ -262,7 +262,7 @@ export default function AboutPage() {
                     performance, and operational requirements.
                   </p>
                   <p className="text-sm leading-relaxed text-[#f9f7f2]/70 sm:text-base">
-                    Terrence is the Co-Founder of E-Kwip-T Sales &amp; Services (Pty) Ltd, established
+                    Terrence is the Co-Founder of E-KWIP-t Sales &amp; Services (Pty) Ltd, established
                     in 2021, specialising in the buying, selling, and sourcing of quality agricultural,
                     industrial, forestry, mining, and construction equipment.
                   </p>
@@ -276,7 +276,7 @@ export default function AboutPage() {
                 {/* Tagline */}
                 <div className="mt-6 rounded-xl border-l-4 border-[#6b7c2a] bg-white/5 px-5 py-4 backdrop-blur-sm sm:mt-8 sm:px-7 sm:py-5">
                   <p className="text-base font-semibold leading-relaxed text-[#6b7c2a] sm:text-lg">
-                    E-KWIP-T Sales &amp; Service (Pty) Ltd — Powering Your Productivity.
+                    E-KWIP-t Sales &amp; Service (Pty) Ltd — Powering Your Productivity.
                   </p>
                 </div>
               </div>

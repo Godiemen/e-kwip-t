@@ -36,19 +36,19 @@ export const CONTACT = {
   displayPhone: '082 636 5471',
   waNumber: '27826365471',
   email: 'sales@ekwipt.co.za',
-  company: 'E-kwip-T Sales and Service (Pty) Ltd',
+  company: 'E-KWIP-t Sales and Service (Pty) Ltd',
 }
 
 export function waLink(machineName?: string): string {
   const text = machineName
-    ? `Hi E-kwip-T, I'd like more information on the ${machineName}.`
-    : `Hi E-kwip-T, I'd like to ask about a machine.`
+    ? `Hi E-KWIP-t, I'd like more information on the ${machineName}.`
+    : `Hi E-KWIP-t, I'd like to ask about a machine.`
   return `https://wa.me/${CONTACT.waNumber}?text=${encodeURIComponent(text)}`
 }
 
 export function waOrderLink(machine: { name: string; price: string; vat?: string; year: string; hours: string; location: string; make: string }): string {
   const lines = [
-    `Hi E-kwip-T, I'd like to order / enquire about:`,
+    `Hi E-KWIP-t, I'd like to order / enquire about:`,
     ``,
     `Machine: ${machine.name}`,
     `Make: ${machine.make}`,
@@ -103,7 +103,7 @@ export const categories: Category[] = [
     name: 'Commercial Vehicles',
     shortName: 'Vehicles',
     blurb: 'Trucks, vans, bakkies and light commercial vehicles for business and site work.',
-    image: '/machines/jcb-3cx-backhoe.png',
+    image: '/images.jpeg',
   },
 ]
 

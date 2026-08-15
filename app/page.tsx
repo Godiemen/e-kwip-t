@@ -1,306 +1,327 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Users, Search, Handshake, Shield, Lightbulb, MessageSquare, Check, Phone, Tag } from 'lucide-react'
 import { HomeHero } from '@/components/home-hero'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
-import { MachineSlider } from '@/components/machine-slider'
-import { CategorySlider } from '@/components/category-slider'
-import { TrustSlider } from '@/components/trust-slider'
-import { getCategories, getFeaturedMachines } from '@/lib/data'
+import { EquipmentSection } from '@/components/equipment-section'
 
 export const revalidate = 0
 
-export default async function HomePage() {
-  const [cats, featured] = await Promise.all([
-    getCategories(),
-    getFeaturedMachines(8),
-  ])
+export default function HomePage() {
   return (
     <>
-      <SiteHeader />
+      <SiteHeader home />
       <main>
         <HomeHero />
 
-        {/* Welcome / About */}
-        <section className="bg-[#f9f7f2] py-20 md:py-28">
+        {/* Three CTA cards */}
+        <section className="bg-[#f9f7f2] py-16 md:py-20">
           <div className="mx-auto max-w-7xl px-4 md:px-6">
-            <div className="grid items-center gap-14 lg:grid-cols-2">
-              <div>
-                <div className="flex items-center gap-3">
-                  <span className="h-px w-12 bg-[#6b7c2a]" />
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6b7c2a]">Welcome to E-kwip-T</span>
-                </div>
-                <h2 className="mt-5 font-display text-4xl font-bold leading-tight text-[#5a6a22] md:text-5xl">
-                  Equipment &amp; Machinery Sales · South Africa
-                </h2>
-                <p className="mt-6 leading-relaxed text-foreground/80">
-                  Welcome to E-KWIP-T Sales &amp; Service (Pty) Ltd. We are an owner-managed business sourcing
-                  and selling agricultural, forestry, yellow equipment, mining plant and site
-                  support gear across South Africa. Whether you are looking for a single tine ripper
-                  or a rigid dump truck, we will find the best solution for you. We trade in new and
-                  used goods, big or small. Every listing is priced, specced and ready for an
-                  on-site inspection — no back-and-forth required.{' '}
-                  <Link
-                    href="/equipment"
-                    className="font-semibold text-[#6b7c2a] underline decoration-1 underline-offset-4 hover:text-[#4b6572]"
-                  >
-                    Browse our stock online
-                  </Link>
-                  .
+            <div className="grid grid-cols-3 gap-4 sm:gap-6">
+              {/* Selling */}
+              <div className="rounded-2xl border border-[#d7d4c9] bg-white p-2.5 shadow-sm transition hover:shadow-xl sm:p-7">
+                <Users className="h-6 w-6 text-[#f97316] sm:h-10 sm:w-10" strokeWidth={1.5} />
+                <h3 className="mt-2 break-words font-display text-[10px] font-bold leading-tight text-[#202e12] sm:mt-5 sm:text-lg">SELLING EQUIPMENT?</h3>
+                <p className="mt-1 hidden text-[10px] leading-relaxed text-[#f97316] sm:mt-3 sm:block sm:text-sm">
+                  Turn your surplus equipment into an opportunity.
+                </p>
+                <p className="mt-1 text-[9px] leading-relaxed text-[#5c6b52] sm:mt-0 sm:text-sm">
+                  We help you reach potential buyers, manage enquiries and make the selling process easier.
+                </p>
+                <Link
+                  href="/sell"
+                  className="mt-2 inline-flex items-center gap-1 text-[9px] font-semibold text-[#f97316] transition hover:text-[#ea580c] sm:mt-5 sm:gap-1.5 sm:text-sm"
+                >
+                  LEARN MORE <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
+                </Link>
+              </div>
+
+              {/* Looking */}
+              <div className="rounded-2xl border border-[#d7d4c9] bg-white p-2.5 shadow-sm transition hover:shadow-xl sm:p-7">
+                <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#6b7c2a] text-[#f9f7f2] sm:h-14 sm:w-14">
+                  <Search className="h-3.5 w-3.5 sm:h-7 sm:w-7" />
+                </span>
+                <h3 className="mt-2 break-words font-display text-[10px] font-bold leading-tight text-[#202e12] sm:mt-5 sm:text-lg">LOOKING FOR EQUIPMENT?</h3>
+                <p className="mt-1 hidden text-[10px] font-bold text-[#202e12] sm:mt-3 sm:block sm:text-sm">
+                  Let us help you find the right opportunity.
+                </p>
+                <p className="mt-1 text-[9px] leading-relaxed text-[#5c6b52] sm:mt-0 sm:text-sm">
+                  Tell Terrence and the team what you&apos;re looking for. We&apos;ll use our network and industry contacts to connect you with potential sellers.
                 </p>
                 <Link
                   href="/equipment"
-                  className="mt-8 inline-flex items-center rounded-lg bg-[#6b7c2a] px-7 py-3.5 font-display font-semibold text-[#f9f7f2] shadow-md transition hover:bg-[#5a6a22] hover:shadow-lg"
+                  className="mt-2 inline-flex items-center gap-1 text-[9px] font-semibold text-[#6b7c2a] transition hover:text-[#5a6a22] sm:mt-5 sm:gap-1.5 sm:text-sm"
                 >
-                  Browse Shop
+                  LEARN MORE <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
                 </Link>
               </div>
-              {/* Image collage */}
-              <div className="relative mx-auto w-full max-w-md pb-16 pr-6 sm:max-w-lg lg:max-w-none">
-                {/* Main image */}
-                <div className="relative aspect-[4/3] w-[86%] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-black/5">
-                  <Image
-                    src="/machines/combine-harvester.png"
-                    alt="Combine harvester for sale"
-                    fill
-                    className="object-cover transition duration-700 hover:scale-105"
-                    sizes="(max-width: 1024px) 90vw, 45vw"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#202e12]/25 via-transparent to-transparent" />
-                </div>
 
-                {/* Overlapping secondary image */}
-                <div className="absolute bottom-0 right-0 aspect-[4/3] w-[58%] overflow-hidden rounded-2xl border-[6px] border-[#f9f7f2] shadow-2xl">
-                  <Image
-                    src="/machines/jcb-3cx-backhoe.png"
-                    alt="JCB backhoe loader for sale"
-                    fill
-                    className="object-cover transition duration-700 hover:scale-105"
-                    sizes="(max-width: 1024px) 55vw, 28vw"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#202e12]/25 via-transparent to-transparent" />
-                </div>
+              {/* Personal service */}
+              <div className="rounded-2xl border border-[#d7d4c9] bg-white p-2.5 shadow-sm transition hover:shadow-xl sm:p-7">
+                <Handshake className="h-6 w-6 text-[#6b7c2a] sm:h-10 sm:w-10" strokeWidth={1.5} />
+                <h3 className="mt-2 break-words font-display text-[10px] font-bold leading-tight text-[#202e12] sm:mt-5 sm:text-lg">PERSONAL SERVICE</h3>
+                <p className="mt-1 hidden text-[10px] leading-relaxed text-[#f97316] sm:mt-3 sm:block sm:text-sm">
+                  Deal directly with Terrence and the team.
+                </p>
+                <p className="mt-1 text-[9px] leading-relaxed text-[#5c6b52] sm:mt-0 sm:text-sm">
+                  We take the time to understand your requirements and help you every step of the way.
+                </p>
+                <Link
+                  href="/about"
+                  className="mt-2 inline-flex items-center gap-1 text-[9px] font-semibold text-[#f97316] transition hover:text-[#ea580c] sm:mt-5 sm:gap-1.5 sm:text-sm"
+                >
+                  ABOUT US <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
 
-                {/* Floating badge */}
-                <div className="absolute left-0 top-4 rounded-xl bg-[#6b7c2a] px-4 py-2.5 shadow-xl sm:px-5 sm:py-3">
-                  <p className="font-display text-xl font-bold leading-none text-[#f9f7f2] sm:text-2xl">2021</p>
-                  <p className="mt-1 text-[0.6rem] font-semibold uppercase tracking-[0.15em] text-[#f9f7f2]/85">
-                    Established
+        <EquipmentSection />
+
+        {/* Why Choose E-KWIP-t */}
+        <section className="bg-[#202e12] py-20 md:py-28">
+          <div className="mx-auto max-w-7xl px-4 md:px-6">
+            <div className="text-center">
+              <h2 className="font-display text-3xl font-bold uppercase text-[#f9f7f2] sm:text-4xl md:text-5xl">
+                WHY CHOOSE E-KWIP-t?
+              </h2>
+            </div>
+            <div className="mt-8 grid grid-cols-5 gap-0 sm:mt-12">
+              {/* Personal Service */}
+              <div className="border-r border-white/10 px-1 py-4 text-center last:border-r-0 sm:px-4 sm:py-6">
+                <Users className="mx-auto h-6 w-6 text-[#f97316] sm:h-10 sm:w-10" strokeWidth={1.5} />
+                <h3 className="mt-2 break-words font-display text-[8px] font-bold uppercase leading-tight text-[#f9f7f2] sm:mt-4 sm:text-sm sm:leading-snug lg:text-base">
+                  Personal Service
+                </h3>
+                <p className="mx-auto mt-1 max-w-[200px] text-[7px] leading-snug text-[#f9f7f2]/60 sm:mt-2 sm:max-w-[220px] sm:text-xs sm:leading-relaxed lg:text-sm">
+                  Deal directly with Terrence and the team who take the time to understand your needs.
+                </p>
+              </div>
+
+              {/* Independent & Unbiased */}
+              <div className="border-r border-white/10 px-1 py-4 text-center last:border-r-0 sm:px-4 sm:py-6">
+                <Shield className="mx-auto h-6 w-6 text-[#f97316] sm:h-10 sm:w-10" strokeWidth={1.5} />
+                <h3 className="mt-2 break-words font-display text-[8px] font-bold uppercase leading-tight text-[#f9f7f2] sm:mt-4 sm:text-sm sm:leading-snug lg:text-base">
+                  Independent &amp; Unbiased
+                </h3>
+                <p className="mx-auto mt-1 max-w-[200px] text-[7px] leading-snug text-[#f9f7f2]/60 sm:mt-2 sm:max-w-[220px] sm:text-xs sm:leading-relaxed lg:text-sm">
+                  We are an independent equipment broker focused on connecting buyers and sellers.
+                </p>
+              </div>
+
+              {/* Industry Knowledge */}
+              <div className="border-r border-white/10 px-1 py-4 text-center last:border-r-0 sm:px-4 sm:py-6">
+                <Lightbulb className="mx-auto h-6 w-6 text-[#f97316] sm:h-10 sm:w-10" strokeWidth={1.5} />
+                <h3 className="mt-2 break-words font-display text-[8px] font-bold uppercase leading-tight text-[#f9f7f2] sm:mt-4 sm:text-sm sm:leading-snug lg:text-base">
+                  Industry Knowledge
+                </h3>
+                <p className="mx-auto mt-1 max-w-[200px] text-[7px] leading-snug text-[#f9f7f2]/60 sm:mt-2 sm:max-w-[220px] sm:text-xs sm:leading-relaxed lg:text-sm">
+                  Our understanding of equipment and industry connections help us identify opportunities.
+                </p>
+              </div>
+
+              {/* Professional Communication */}
+              <div className="border-r border-white/10 px-1 py-4 text-center last:border-r-0 sm:px-4 sm:py-6">
+                <MessageSquare className="mx-auto h-6 w-6 text-[#f97316] sm:h-10 sm:w-10" strokeWidth={1.5} />
+                <h3 className="mt-2 break-words font-display text-[8px] font-bold uppercase leading-tight text-[#f9f7f2] sm:mt-4 sm:text-sm sm:leading-snug lg:text-base">
+                  Professional Communication
+                </h3>
+                <p className="mx-auto mt-1 max-w-[200px] text-[7px] leading-snug text-[#f9f7f2]/60 sm:mt-2 sm:max-w-[220px] sm:text-xs sm:leading-relaxed lg:text-sm">
+                  We keep the process clear, professional and straightforward from enquiry to connection.
+                </p>
+              </div>
+
+              {/* Strong Connections */}
+              <div className="border-r border-white/10 px-1 py-4 text-center last:border-r-0 sm:px-4 sm:py-6">
+                <Handshake className="mx-auto h-6 w-6 text-[#f97316] sm:h-10 sm:w-10" strokeWidth={1.5} />
+                <h3 className="mt-2 break-words font-display text-[8px] font-bold uppercase leading-tight text-[#f9f7f2] sm:mt-4 sm:text-sm sm:leading-snug lg:text-base">
+                  Strong Connections
+                </h3>
+                <p className="mx-auto mt-1 max-w-[200px] text-[7px] leading-snug text-[#f9f7f2]/60 sm:mt-2 sm:max-w-[220px] sm:text-xs sm:leading-relaxed lg:text-sm">
+                  Our growing network helps bring equipment owners and potential buyers together.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Founder + CTA */}
+        <section className="bg-[#f9f7f2] py-16 md:py-28">
+          <div className="mx-auto max-w-7xl px-4 md:px-6">
+            {/* Mobile: stacked layout */}
+            <div className="flex flex-col gap-8 lg:hidden">
+              {/* Photo + bio side by side */}
+              <div className="flex gap-4">
+                <div className="relative w-24 shrink-0">
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-xl shadow-2xl">
+                    <Image
+                      src="/123744.jpg"
+                      alt="Terrence Carey, Owner of E-KWIP-t Sales &amp; Service (Pty) Ltd"
+                      fill
+                      className="object-cover"
+                      sizes="96px"
+                    />
+                  </div>
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h2 className="font-display text-base font-bold uppercase text-[#202e12]">
+                    Terrence Carey
+                  </h2>
+                  <p className="mt-1 text-xs font-semibold text-[#f97316]">
+                    Owner — E-KWIP-t Sales &amp; Service (Pty) Ltd
                   </p>
+                  <p className="mt-2 text-xs leading-relaxed text-[#5c6b52]">
+                    Terrence believes that successful equipment deals start with the right people and the right information.
+                  </p>
+                  <ul className="mt-3 space-y-1.5 text-xs text-[#202e12]">
+                    <li className="flex items-center gap-2">
+                      <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#6b7c2a] text-[#f9f7f2]">
+                        <Check className="h-2.5 w-2.5" />
+                      </span>
+                      Understand the requirement.
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#6b7c2a] text-[#f9f7f2]">
+                        <Check className="h-2.5 w-2.5" />
+                      </span>
+                      Make the connection.
+                    </li>
+                  </ul>
+                  <Link
+                    href="/about"
+                    className="mt-4 inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#6b7c2a] px-5 py-2.5 font-display text-xs font-semibold text-[#f9f7f2] shadow-lg transition hover:bg-[#5a6a22]"
+                  >
+                    Read Full Story
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
                 </div>
-
-                {/* Decorative accents */}
-                <div className="absolute -right-2 -top-4 -z-10 h-24 w-24 rounded-full bg-[#6b7c2a]/10" />
-                <div className="absolute bottom-8 -left-4 -z-10 h-32 w-32 rounded-3xl bg-[#4b6572]/10" />
               </div>
-            </div>
-          </div>
-        </section>
 
-        {/* Categories */}
-        <section id="stock" className="scroll-mt-20 bg-[#f9f7f2] py-20 md:py-28">
-          <div className="mx-auto max-w-7xl px-4 md:px-6">
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-3">
-                <span className="h-px w-12 bg-[#6b7c2a]" />
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6b7c2a]">Browse by Type</span>
-                <span className="h-px w-12 bg-[#6b7c2a]" />
-              </div>
-              <h2 className="mt-5 font-display text-4xl font-bold text-[#5a6a22] md:text-5xl">
-                Popular Categories
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-[#5c6b52]">
-                Six categories, one yard sheet. Pick a category to see current stock, specs and
-                asking prices.
-              </p>
-            </div>
-            <div className="mt-12">
-              <CategorySlider categories={cats} />
-            </div>
-          </div>
-        </section>
-
-        {/* Featured stock */}
-        <section className="bg-white py-20 md:py-28">
-          <div className="mx-auto max-w-7xl px-4 md:px-6">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <div className="flex items-center gap-3">
-                  <span className="h-px w-12 bg-[#6b7c2a]" />
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6b7c2a]">Featured Stock</span>
-                </div>
-                <h2 className="mt-4 font-display text-4xl font-bold text-[#5a6a22] md:text-5xl">
-                  Currently on the yard sheet
+              {/* CTA card */}
+              <div className="rounded-2xl bg-white p-5 shadow-sm">
+                <h2 className="font-display text-lg font-bold uppercase text-[#202e12]">
+                  Ready to Buy or Sell?
                 </h2>
+                <p className="mt-2 text-sm leading-relaxed text-[#5c6b52]">
+                  Whether you have used machinery to sell or you&apos;re looking for quality pre-owned equipment, Terrence and the team are ready to help.
+                </p>
+                <div className="mt-4 flex flex-col gap-2.5">
+                  <Link
+                    href="/sell"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#f97316] px-5 py-3 font-display text-sm font-semibold text-[#f9f7f2] shadow-lg transition hover:bg-[#ea580c]"
+                  >
+                    <Tag className="h-4 w-4" />
+                    SELL YOUR EQUIPMENT
+                  </Link>
+                  <Link
+                    href="/equipment"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#202e12] px-5 py-3 font-display text-sm font-semibold text-[#f9f7f2] transition hover:bg-[#202e12]/90"
+                  >
+                    <Search className="h-4 w-4" />
+                    FIND EQUIPMENT
+                  </Link>
+                </div>
+                <p className="mt-4 flex items-center gap-2 text-sm text-[#6b7c2a]">
+                  <Phone className="h-4 w-4" />
+                  Let&apos;s talk about your equipment requirements.
+                </p>
               </div>
-              <Link
-                href="/equipment"
-                className="inline-flex shrink-0 items-center gap-2 rounded-lg border-2 border-[#6b7c2a] px-5 py-2.5 text-sm font-semibold text-[#6b7c2a] transition hover:bg-[#6b7c2a] hover:text-[#f9f7f2]"
-              >
-                View All Stock
-                <ArrowRight className="h-4 w-4" />
-              </Link>
             </div>
-            <div className="mt-12">
-              <MachineSlider machines={featured} />
-            </div>
-          </div>
-        </section>
 
-        {/* Why E-kwip-T */}
-        <section className="bg-[#f9f7f2] py-20 md:py-28">
-          <div className="mx-auto max-w-7xl px-4 md:px-6">
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-3">
-                <span className="h-px w-12 bg-[#6b7c2a]" />
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6b7c2a]">Why E-kwip-T</span>
-                <span className="h-px w-12 bg-[#6b7c2a]" />
-              </div>
-              <h2 className="mt-5 font-display text-4xl font-bold text-[#5a6a22] md:text-5xl">
-                Buying equipment shouldn&apos;t be a gamble
-              </h2>
-            </div>
-            <div className="mt-14">
-              <TrustSlider />
-            </div>
-          </div>
-        </section>
-
-        {/* Founder Introduction */}
-        <section className="relative overflow-hidden bg-[#202e12] py-20 md:py-28">
-          <div className="absolute inset-0 opacity-5">
-            <div className="h-full w-full bg-gradient-to-br from-[#6b7c2a] to-transparent" />
-          </div>
-          <div className="relative mx-auto max-w-7xl px-4 md:px-6">
-            <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-              {/* Left: founder photo with floating badge */}
-              <div className="relative order-2 mx-auto w-full max-w-sm lg:order-1 lg:mx-0 lg:max-w-none">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
+            {/* Desktop: 3-column layout */}
+            <div className="hidden items-start gap-8 lg:grid lg:grid-cols-3">
+              {/* Left: photo */}
+              <div className="relative w-full">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl">
                   <Image
                     src="/123744.jpg"
-                    alt="Terrence Carey, Co-Founder of E-Kwip-T Sales & Services (Pty) Ltd"
+                    alt="Terrence Carey, Owner of E-KWIP-t Sales &amp; Service (Pty) Ltd"
                     fill
                     className="object-cover"
-                    sizes="(max-width: 1024px) 80vw, 50vw"
+                    sizes="33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#202e12]/40 via-transparent to-transparent" />
                 </div>
-                {/* Floating experience badge */}
-                <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 rounded-xl bg-[#6b7c2a] px-6 py-3 shadow-xl lg:left-auto lg:right-4 lg:translate-x-0">
-                  <p className="font-display text-3xl font-bold text-[#f9f7f2]">30+</p>
-                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-[#f9f7f2]/80">Years Experience</p>
-                </div>
-                {/* Decorative accents */}
-                <div className="absolute -right-4 -top-4 -z-10 h-28 w-28 rounded-full bg-[#6b7c2a]/15" />
-                <div className="absolute -bottom-8 -left-4 -z-10 h-36 w-36 rounded-3xl bg-[#4b6572]/15" />
               </div>
 
-              {/* Right: founder bio */}
-              <div className="order-1 min-w-0 lg:order-2">
-                <div className="flex items-center gap-3">
-                  <span className="h-px w-12 bg-[#6b7c2a]" />
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6b7c2a]">Founder Introduction</span>
-                </div>
-                <h2 className="mt-5 break-words font-display text-3xl font-bold leading-tight text-[#f9f7f2] sm:text-4xl md:text-5xl">
-                  Meet Terrence Carey
+              {/* Middle: bio */}
+              <div className="min-w-0">
+                <h2 className="font-display text-3xl font-bold uppercase text-[#202e12] lg:text-4xl">
+                  Terrence Carey
                 </h2>
-                <p className="mt-3 text-base font-semibold text-[#f9f7f2]/70 sm:text-lg">
-                  Co-Founder of E-Kwip-T Sales &amp; Services (Pty) Ltd
+                <p className="mt-2 text-sm font-semibold text-[#f97316] lg:text-base">
+                  Owner — E-KWIP-t Sales &amp; Service (Pty) Ltd
                 </p>
 
-                <div className="mt-6 space-y-4 sm:mt-8 sm:space-y-5">
-                  <p className="text-sm leading-relaxed text-[#f9f7f2]/70 sm:text-base">
-                    Born in Zambia and raised in KwaZulu-Natal, Terrence Carey brings over 30 years of
-                    mechanical and marine engineering experience to the machinery industry. After
-                    relocating to KZN at a young age, he grew up in the Upper Highway area before his
-                    family eventually settled in Makabathini near Camperdown.
+                <div className="mt-4 space-y-3 text-sm leading-relaxed text-[#5c6b52] lg:text-base">
+                  <p>
+                    Terrence believes that successful equipment deals start with the right people and
+                    the right information.
                   </p>
-                  <p className="text-sm leading-relaxed text-[#f9f7f2]/70 sm:text-base">
-                    Influenced by his mother&apos;s involvement in the equestrian world, Terrence
-                    developed a strong connection to rural communities and the industries they support.
-                  </p>
-                  <p className="text-sm leading-relaxed text-[#f9f7f2]/70 sm:text-base">
-                    As Co-Founder of E-Kwip-T Sales &amp; Services (Pty) Ltd, established in 2021,
-                    Terrence specialises in sourcing and trading agricultural, industrial, forestry,
-                    mining, and construction equipment, supported by extensive engineering knowledge
-                    and practical experience.
+                  <p>
+                    Together with his team, Terrence takes a personal approach to every enquiry —
+                    whether you&apos;re selling equipment or searching for your next machine.
                   </p>
                 </div>
 
-                {/* Tagline */}
-                <div className="mt-6 rounded-xl border-l-4 border-[#6b7c2a] bg-white/5 px-5 py-4 backdrop-blur-sm sm:mt-8 sm:px-7 sm:py-5">
-                  <p className="text-base font-semibold leading-relaxed text-[#6b7c2a] sm:text-lg">
-                    E-KWIP-T Sales &amp; Service (Pty) Ltd — Powering Your Productivity.
-                  </p>
-                </div>
+                <ul className="mt-5 space-y-2 text-sm text-[#202e12] lg:text-base">
+                  <li className="flex items-center gap-2">
+                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#6b7c2a] text-[#f9f7f2]">
+                      <Check className="h-3.5 w-3.5" />
+                    </span>
+                    Understand the requirement.
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#6b7c2a] text-[#f9f7f2]">
+                      <Check className="h-3.5 w-3.5" />
+                    </span>
+                    Make the connection.
+                  </li>
+                </ul>
 
                 <Link
                   href="/about"
-                  className="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-[#6b7c2a] px-7 py-3.5 font-display font-semibold text-[#f9f7f2] shadow-lg transition hover:bg-[#5a6a22] sm:mt-8"
+                  className="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-[#6b7c2a] px-7 py-3.5 font-display font-semibold text-[#f9f7f2] shadow-lg transition hover:bg-[#5a6a22]"
                 >
                   Read Full Story
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
-            </div>
-          </div>
-        </section>
 
-        {/* Sell band */}
-        <section className="bg-[#4b6572] py-16 md:py-20">
-          <div className="mx-auto flex max-w-7xl flex-col items-start gap-6 px-4 md:flex-row md:items-center md:justify-between md:px-6">
-            <div className="max-w-xl">
-              <div className="flex items-center gap-3">
-                <span className="h-px w-12 bg-[#f9f7f2]/30" />
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f9f7f2]/50">Sell With Us</span>
+              {/* Right: CTA */}
+              <div className="min-w-0">
+                <h2 className="font-display text-3xl font-bold uppercase text-[#202e12] lg:text-4xl">
+                  Ready to Buy or Sell?
+                </h2>
+                <p className="mt-4 text-sm leading-relaxed text-[#5c6b52] lg:text-base">
+                  Whether you have used machinery to sell or you&apos;re looking for quality pre-owned
+                  equipment, Terrence and the team are ready to help.
+                </p>
+
+                <div className="mt-6 flex flex-col gap-3">
+                  <Link
+                    href="/sell"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#f97316] px-6 py-3.5 font-display text-sm font-semibold text-[#f9f7f2] shadow-lg transition hover:bg-[#ea580c]"
+                  >
+                    <Tag className="h-4 w-4" />
+                    SELL YOUR EQUIPMENT
+                  </Link>
+                  <Link
+                    href="/equipment"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#202e12] px-6 py-3.5 font-display text-sm font-semibold text-[#f9f7f2] transition hover:bg-[#202e12]/90"
+                  >
+                    <Search className="h-4 w-4" />
+                    FIND EQUIPMENT
+                  </Link>
+                </div>
+
+                <p className="mt-5 flex items-center gap-2 text-sm text-[#6b7c2a]">
+                  <Phone className="h-4 w-4" />
+                  Let&apos;s talk about your equipment requirements.
+                </p>
               </div>
-              <h2 className="mt-4 font-display text-3xl font-bold text-[#f9f7f2] md:text-4xl">
-                Got equipment standing idle?
-              </h2>
-              <p className="mt-3 text-[#f9f7f2]/80">
-                List it with E-KWIP-T Sales &amp; Service (Pty) Ltd. We handle the enquiries, the viewings and the paperwork —
-                you get a fair number, faster.
-              </p>
             </div>
-            <Link
-              href="/contact"
-              className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-[#6b7c2a] px-7 py-3.5 font-display font-semibold text-[#f9f7f2] shadow-lg transition hover:bg-[#5a6a22]"
-            >
-              Contact Us
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="relative overflow-hidden bg-[#4b6572] py-24 text-center md:py-32">
-          <div className="absolute inset-0 opacity-20">
-            <Image
-              src="/machines/wheel-loader.png"
-              alt=""
-              fill
-              className="object-cover"
-              sizes="100vw"
-            />
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#202e12]/60 to-transparent" />
-          <div className="relative mx-auto max-w-3xl px-4 md:px-6">
-            <div className="flex items-center justify-center gap-3">
-              <span className="h-px w-12 bg-[#f9f7f2]/30" />
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f9f7f2]/50">Get Started</span>
-              <span className="h-px w-12 bg-[#f9f7f2]/30" />
-            </div>
-            <h2 className="mt-5 font-display text-4xl font-bold text-[#f9f7f2] md:text-5xl">
-              Ready To Get Started?
-            </h2>
-            <Link
-              href="/contact"
-              className="mt-8 inline-flex items-center rounded-lg bg-[#6b7c2a] px-8 py-4 font-display font-semibold text-[#f9f7f2] shadow-lg transition hover:bg-[#5a6a22]"
-            >
-              Contact us
-              <ArrowRight className="h-4 w-4" />
-            </Link>
           </div>
         </section>
       </main>

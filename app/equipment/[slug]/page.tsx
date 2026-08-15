@@ -21,10 +21,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params
   const category = await getCategoryBySlug(slug)
-  if (!category) return { title: 'Equipment | E-kwip-T' }
+  if (!category) return { title: 'Equipment | E-KWIP-t' }
   return {
-    title: `${category.name} For Sale | E-kwip-T`,
-    description: `${category.blurb} Inspected stock and straight pricing from E-kwip-T across South Africa.`,
+    title: `${category.name} For Sale | E-KWIP-t`,
+    description: `${category.blurb} Inspected stock and straight pricing from E-KWIP-t across South Africa.`,
   }
 }
 

@@ -238,14 +238,14 @@ export default function AdminMasterPage() {
               <div className="mx-auto mb-3 inline-flex h-16 w-16 items-center justify-center rounded-full ring-4 ring-white/20">
                 <Image
                   src="/123690 (1).jpg"
-                  alt="E-kwip-T logo"
+                  alt="E-KWIP-t logo"
                   width={64}
                   height={64}
                   className="h-16 w-16 rounded-full object-cover"
                 />
               </div>
               <h1 className="font-display text-2xl font-bold text-[#f9f7f2]">Admin Master</h1>
-              <p className="mt-1 text-sm text-[#f9f7f2]/80">E-kwip-T Management Panel</p>
+              <p className="mt-1 text-sm text-[#f9f7f2]/80">E-KWIP-t Management Panel</p>
             </div>
 
             {/* Form */}
@@ -345,7 +345,7 @@ export default function AdminMasterPage() {
             <Image src="/123690 (1).jpg" alt="Logo" width={36} height={36} className="h-9 w-9 shrink-0 rounded-full ring-2 ring-white/20 sm:h-10 sm:w-10" />
             <div className="min-w-0">
               <h1 className="truncate font-display text-base font-bold text-[#f9f7f2] sm:text-lg">Admin Master</h1>
-              <p className="hidden text-xs text-[#f9f7f2]/70 sm:block">E-kwip-T Management</p>
+              <p className="hidden text-xs text-[#f9f7f2]/70 sm:block">E-KWIP-t Management</p>
             </div>
           </div>
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">

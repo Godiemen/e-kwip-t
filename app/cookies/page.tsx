@@ -6,7 +6,7 @@ import { PageHero } from '@/components/page-hero'
 export const metadata: Metadata = {
   title: 'Cookie Policy',
   description:
-    'How E-kwip-T Sales and Service uses cookies and similar technologies on this website.',
+    'How E-KWIP-t Sales and Service uses cookies and similar technologies on this website.',
 }
 
 export default function CookiesPage() {
@@ -41,7 +41,7 @@ export default function CookiesPage() {
               <div>
                 <h2 className="font-display text-2xl font-bold text-[#5a6a22]">How we use cookies</h2>
                 <p className="mt-3 leading-relaxed text-[#5c6b52]">
-                  E-kwip-T Sales and Service uses cookies for the following purposes:
+                  E-KWIP-t Sales and Service uses cookies for the following purposes:
                 </p>
                 <ul className="mt-4 space-y-3 text-[#5c6b52]">
                   <li className="flex gap-3">

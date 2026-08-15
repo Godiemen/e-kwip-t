@@ -7,9 +7,9 @@ import { ContactBand } from '@/components/contact-band'
 import { getCategories, getAllMachines } from '@/lib/data'
 
 export const metadata: Metadata = {
-  title: 'Gallery | E-kwip-T Sales and Service',
+  title: 'Gallery | E-KWIP-t Sales and Service',
   description:
-    'Photo gallery of current and past stock from E-kwip-T Sales and Service — tractors, dozers, ADTs, harvesters and more.',
+    'Photo gallery of current and past stock from E-KWIP-t Sales and Service — tractors, dozers, ADTs, harvesters and more.',
 }
 
 export const revalidate = 0

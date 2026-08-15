@@ -4,26 +4,47 @@ import { cn } from '@/lib/utils'
 export function BrandLogo({
   className,
   tone = 'light',
+  home = false,
 }: {
   className?: string
   tone?: 'light' | 'dark'
+  home?: boolean
 }) {
   return (
     <span className={cn('inline-flex items-center gap-3', className)}>
-      <Image
-        src="/123690 (1).jpg"
-        alt="E-kwip-T logo"
-        width={56}
-        height={56}
-        className="h-14 w-14 shrink-0 rounded-full object-cover ring-2 ring-white/20"
-        priority
-      />
+      <span
+        className={cn(
+          'shrink-0 overflow-hidden rounded-full ring-2 ring-white/20',
+          home ? 'h-16 w-16 sm:h-20 sm:w-20' : 'h-14 w-14'
+        )}
+      >
+        <Image
+          src="/123690 (1).jpg"
+          alt="E-kwip-T logo"
+          width={96}
+          height={96}
+          className="h-full w-full object-cover"
+          priority
+        />
+      </span>
       <span className="flex flex-col leading-none">
-        <span className={cn('font-display text-lg font-bold tracking-tight', tone === 'light' ? 'text-[#f9f7f2]' : 'text-[#6b7c2a]')}>
-          E-KWIP-T Sales &amp; Service
+        <span
+          className={cn(
+            'font-display font-bold tracking-tight',
+            home ? 'text-2xl sm:text-3xl' : 'text-lg',
+            tone === 'light' ? 'text-[#f9f7f2]' : 'text-[#6b7c2a]'
+          )}
+        >
+          E-KWIP-t
         </span>
-        <span className={cn('mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em]', tone === 'light' ? 'text-[#f9f7f2]/80' : 'text-[#6b7c2a]/70')}>
-          (Pty) Ltd
+        <span
+          className={cn(
+            'mt-1 font-semibold uppercase tracking-[0.15em]',
+            home ? 'text-[0.65rem] sm:text-xs' : 'text-[0.65rem]',
+            tone === 'light' ? 'text-[#f9f7f2]/80' : 'text-[#6b7c2a]/70'
+          )}
+        >
+          Sales &amp; Service (Pty) Ltd
         </span>
       </span>
     </span>
