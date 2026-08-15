@@ -84,7 +84,7 @@ export default function HomePage() {
         <section className="bg-[#202e12] py-20 md:py-28">
           <div className="mx-auto max-w-7xl px-4 md:px-6">
             <div className="text-center">
-              <h2 className="font-display text-3xl font-bold uppercase text-[#f9f7f2] sm:text-4xl md:text-5xl">
+              <h2 className="font-display text-3xl font-bold text-[#f9f7f2] sm:text-4xl md:text-5xl">
                 WHY CHOOSE E-KWIP-t?
               </h2>
             </div>
