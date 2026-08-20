@@ -33,10 +33,10 @@ export function SiteFooter() {
           {/* Brand/tagline */}
           <div className="min-w-0 sm:col-span-2 lg:col-span-1">
             <BrandLogo tone="light" />
-            <p className="mt-4 font-display text-lg font-bold text-[#f97316] sm:text-xl">
+            <p className="mt-4 font-display text-lg font-bold text-[#6b7c2a] sm:text-xl">
               Connecting Buyers &amp; Sellers.
             </p>
-            <p className="font-display text-lg font-bold text-[#f97316] sm:text-xl">
+            <p className="font-display text-lg font-bold text-[#6b7c2a] sm:text-xl">
               Creating Opportunities.
             </p>
             <p className="mt-3 text-sm font-semibold text-[#f9f7f2] sm:text-base">
@@ -46,7 +46,7 @@ export function SiteFooter() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display text-sm font-bold uppercase tracking-wider text-[#f97316]">
+            <h4 className="font-display text-sm font-bold uppercase tracking-wider text-[#6b7c2a]">
               Quick Links
             </h4>
             <ul className="mt-4 space-y-2 text-sm text-[#f9f7f2]/80">
@@ -65,7 +65,7 @@ export function SiteFooter() {
 
           {/* Equipment */}
           <div>
-            <h4 className="font-display text-sm font-bold uppercase tracking-wider text-[#f97316]">
+            <h4 className="font-display text-sm font-bold uppercase tracking-wider text-[#6b7c2a]">
               Equipment
             </h4>
             <ul className="mt-4 space-y-2 text-sm text-[#f9f7f2]/80">
@@ -84,13 +84,13 @@ export function SiteFooter() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-display text-sm font-bold uppercase tracking-wider text-[#f97316]">
+            <h4 className="font-display text-sm font-bold uppercase tracking-wider text-[#6b7c2a]">
               Contact Us
             </h4>
             <ul className="mt-4 space-y-3 text-sm text-[#f9f7f2]/80">
               {contactInfo.map((item, i) => (
                 <li key={i} className="flex items-start gap-2.5">
-                  <span className="mt-0.5 shrink-0 text-[#f97316]">
+                  <span className="mt-0.5 shrink-0 text-[#6b7c2a]">
                     {item.icon}
                   </span>
                   <span>{item.text}</span>

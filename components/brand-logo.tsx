@@ -20,7 +20,7 @@ export function BrandLogo({
       >
         <Image
           src="/123690 (1).jpg"
-          alt="E-kwip-T logo"
+          alt="E-kwip-t logo"
           width={96}
           height={96}
           className="h-full w-full object-cover"
@@ -35,7 +35,7 @@ export function BrandLogo({
             tone === 'light' ? 'text-[#f9f7f2]' : 'text-[#6b7c2a]'
           )}
         >
-          E-KWIP-t
+          E-kwip-t
         </span>
         <span
           className={cn(
