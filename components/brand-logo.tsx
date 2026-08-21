@@ -30,7 +30,7 @@ export function BrandLogo({
       <span className="flex flex-col leading-none">
         <span
           className={cn(
-            'font-display font-bold tracking-tight',
+            'font-rounded font-extrabold tracking-tight',
             home ? 'text-2xl sm:text-3xl' : 'text-lg',
             tone === 'light' ? 'text-[#f9f7f2]' : 'text-[#6b7c2a]'
           )}
@@ -39,7 +39,7 @@ export function BrandLogo({
         </span>
         <span
           className={cn(
-            'mt-1 font-semibold uppercase tracking-[0.15em]',
+            'mt-1 font-rounded font-bold uppercase tracking-[0.15em]',
             home ? 'text-[0.65rem] sm:text-xs' : 'text-[0.65rem]',
             tone === 'light' ? 'text-[#f9f7f2]/80' : 'text-[#6b7c2a]/70'
           )}

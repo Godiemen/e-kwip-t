@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Inter, Oswald } from 'next/font/google'
+import { Inter, Oswald, Nunito } from 'next/font/google'
 import { CookieBanner } from '@/components/cookie-banner'
 import './globals.css'
 
@@ -14,6 +14,13 @@ const oswald = Oswald({
   subsets: ['latin'],
   variable: '--font-oswald',
   weight: ['400', '500', '600', '700'],
+  display: 'swap',
+})
+
+const nunito = Nunito({
+  subsets: ['latin'],
+  variable: '--font-nunito',
+  weight: ['400', '500', '600', '700', '800', '900'],
   display: 'swap',
 })
 
@@ -42,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en-ZA" className={`${inter.variable} ${oswald.variable} bg-background`}>
+    <html lang="en-ZA" className={`${inter.variable} ${oswald.variable} ${nunito.variable} bg-background`}>
       <body className="font-sans antialiased">
         {children}
         <CookieBanner />

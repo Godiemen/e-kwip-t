@@ -28,8 +28,9 @@
   --color-brand-muted: var(--brand-muted);
   --color-steel: var(--steel);
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-oswald), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-nunito), 'Arial Rounded MT Bold', ui-rounded, 'Helvetica Rounded', Arial, sans-serif;
+  --font-display: var(--font-nunito), 'Arial Rounded MT Bold', ui-rounded, 'Helvetica Rounded', Arial, sans-serif;
+  --font-rounded: var(--font-nunito), 'Arial Rounded MT Bold', ui-rounded, 'Helvetica Rounded', Arial, sans-serif;
 
   --radius-sm: calc(var(--radius) * 0.5);
   --radius-md: calc(var(--radius) * 0.75);
