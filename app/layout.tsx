@@ -37,6 +37,9 @@ export const metadata: Metadata = {
     apple: '/123690 (1).jpg',
   },
   generator: 'v0.app',
+  verification: {
+    google: '7mr2jImGeTZ31HA8ASAfUBRaLWYbk3U88st72lJbulw',
+  },
 }
 
 export const viewport: Viewport = {
