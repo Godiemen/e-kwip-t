@@ -50,7 +50,7 @@ export default async function CategoryPage({
           description={category.blurb}
           breadcrumbs={[
             { label: 'Home', href: '/' },
-            { label: 'Equipment', href: '/equipment/yellow-equipment' },
+            { label: 'Equipment', href: '/equipment' },
             { label: category.shortName },
           ]}
           image={category.image}

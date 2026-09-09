@@ -160,6 +160,9 @@ export async function getAllCategorySlugs(): Promise<string[]> {
     return staticCategories.map((c) => c.slug)
   }
   const { data } = await supabase.from('categories').select('slug')
-  if (!data || data.length === 0) return staticCategories.map((c) => c.slug)
-  return (data as { slug: string }[]).map((d) => d.slug)
+  const dbSlugs = data && data.length > 0
+    ? (data as { slug: string }[]).map((d) => d.slug)
+    : []
+  // Always merge with static slugs so all routes exist
+  return [...new Set([...dbSlugs, ...staticCategories.map((c) => c.slug)])]
 }
