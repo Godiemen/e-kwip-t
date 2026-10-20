@@ -63,6 +63,9 @@ export default function AdminMasterPage() {
   const [creating, setCreating] = useState(false)
   const [uploading, setUploading] = useState(false)
   const [saveMsg, setSaveMsg] = useState('')
+  const [tab, setTab] = useState<'machines' | 'categories'>('machines')
+  const [editingCat, setEditingCat] = useState<CategoryRow | null>(null)
+  const [creatingCat, setCreatingCat] = useState(false)
 
   // ---- Auth ----
   useEffect(() => {
@@ -212,6 +215,55 @@ export default function AdminMasterPage() {
       .update({ featured: !m.featured })
       .eq('id', m.id)
     if (error) alert('Failed: ' + error.message)
+    fetchData()
+  }
+
+  // ---- Save category ----
+  async function saveCategory(c: CategoryRow, isNew: boolean) {
+    setLoading(true)
+    setSaveMsg('')
+    if (isNew) {
+      const { error } = await supabase.from('categories').insert({
+        slug: c.slug,
+        name: c.name,
+        short_name: c.short_name,
+        blurb: c.blurb,
+        image: c.image,
+      })
+      if (error) alert('Insert failed: ' + error.message)
+      else setSaveMsg('Category added successfully')
+    } else {
+      const { error } = await supabase
+        .from('categories')
+        .update({
+          slug: c.slug,
+          name: c.name,
+          short_name: c.short_name,
+          blurb: c.blurb,
+          image: c.image,
+        })
+        .eq('id', c.id)
+      if (error) alert('Update failed: ' + error.message)
+      else setSaveMsg('Category updated successfully')
+    }
+    setLoading(false)
+    setEditingCat(null)
+    setCreatingCat(false)
+    fetchData()
+    setTimeout(() => setSaveMsg(''), 3000)
+  }
+
+  // ---- Delete category ----
+  async function deleteCategory(id: string, name: string) {
+    const inUse = machines.filter((m) =>
+      cats.find((c) => c.id === id && c.slug === m.category_slug),
+    )
+    const warn = inUse.length
+      ? `\n\nWARNING: ${inUse.length} machine(s) use this category. Deleting it may leave them orphaned.`
+      : ''
+    if (!confirm(`Delete category "${name}"? This cannot be undone.${warn}`)) return
+    const { error } = await supabase.from('categories').delete().eq('id', id)
+    if (error) alert('Delete failed: ' + error.message)
     fetchData()
   }
 
@@ -374,6 +426,28 @@ export default function AdminMasterPage() {
           </div>
         )}
 
+        {/* Tab switcher */}
+        <div className="mb-6 inline-flex rounded-lg border border-[#d7d4c9] bg-white p-1 shadow-sm">
+          <button
+            onClick={() => setTab('machines')}
+            className={`rounded-md px-4 py-2 text-sm font-semibold transition ${
+              tab === 'machines' ? 'bg-[#6b7c2a] text-[#f9f7f2]' : 'text-[#5c6b52] hover:bg-[#efede5]'
+            }`}
+          >
+            Machines
+          </button>
+          <button
+            onClick={() => setTab('categories')}
+            className={`rounded-md px-4 py-2 text-sm font-semibold transition ${
+              tab === 'categories' ? 'bg-[#6b7c2a] text-[#f9f7f2]' : 'text-[#5c6b52] hover:bg-[#efede5]'
+            }`}
+          >
+            Categories
+          </button>
+        </div>
+
+        {tab === 'machines' && (
+          <>
         {/* Stats row */}
         <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
           <StatCard label="Total Machines" value={machines.length} />
@@ -567,6 +641,91 @@ export default function AdminMasterPage() {
             </div>
           </>
         )}
+          </>
+        )}
+
+        {tab === 'categories' && (
+          <>
+            {/* Categories stats */}
+            <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+              <StatCard label="Total Categories" value={cats.length} />
+              <StatCard label="With Machines" value={cats.filter((c) => machines.some((m) => m.category_slug === c.slug)).length} />
+              <StatCard label="Empty" value={cats.filter((c) => !machines.some((m) => m.category_slug === c.slug)).length} />
+            </div>
+
+            {/* Categories toolbar */}
+            <div className="mb-6 flex items-center justify-between">
+              <h2 className="font-display text-lg font-bold text-[#202e12]">All Categories</h2>
+              <button
+                onClick={() => {
+                  setCreatingCat(true)
+                  setEditingCat({
+                    id: '',
+                    slug: '',
+                    name: '',
+                    short_name: '',
+                    blurb: '',
+                    image: '',
+                  })
+                }}
+                className="inline-flex items-center gap-2 rounded-lg bg-[#6b7c2a] px-5 py-2.5 font-display text-sm font-semibold text-[#f9f7f2] transition hover:bg-[#5a6a22]"
+              >
+                <Plus className="h-4 w-4" />
+                Add Category
+              </button>
+            </div>
+
+            {/* Categories grid */}
+            {cats.length === 0 ? (
+              <div className="rounded-xl border border-[#d7d4c9] bg-white p-8 text-center text-[#5c6b52] shadow-sm sm:p-12">
+                No categories yet. Click "Add Category" to create one.
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {cats.map((c) => {
+                  const count = machines.filter((m) => m.category_slug === c.slug).length
+                  return (
+                    <div key={c.id} className="overflow-hidden rounded-xl border border-[#d7d4c9] bg-white shadow-sm">
+                      <div className="relative h-32 bg-[#efede5]">
+                        {c.image ? (
+                          <Image src={c.image} alt={c.name} fill className="object-cover" sizes="300px" />
+                        ) : (
+                          <div className="flex h-full items-center justify-center">
+                            <ImageIcon className="h-8 w-8 text-[#5c6b52]/40" />
+                          </div>
+                        )}
+                        <span className="absolute right-2 top-2 rounded-full bg-[#202e12]/80 px-2.5 py-1 text-xs font-semibold text-[#f9f7f2]">
+                          {count} machine{count !== 1 ? 's' : ''}
+                        </span>
+                      </div>
+                      <div className="p-4">
+                        <h3 className="font-display font-bold text-[#202e12]">{c.name}</h3>
+                        <p className="text-xs text-[#5c6b52]">/{c.slug}</p>
+                        {c.blurb && <p className="mt-1.5 line-clamp-2 text-sm text-[#5c6b52]">{c.blurb}</p>}
+                        <div className="mt-3 flex items-center justify-end gap-2 border-t border-[#d7d4c9] pt-3">
+                          <button
+                            onClick={() => setEditingCat(c)}
+                            className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-[#efede5] text-[#6b7c2a] transition hover:bg-[#6b7c2a] hover:text-[#f9f7f2]"
+                            title="Edit"
+                          >
+                            <Edit3 className="h-4 w-4" />
+                          </button>
+                          <button
+                            onClick={() => deleteCategory(c.id, c.name)}
+                            className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-red-50 text-red-600 transition hover:bg-red-600 hover:text-white"
+                            title="Delete"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            )}
+          </>
+        )}
       </main>
 
       {/* Edit / Create modal */}
@@ -582,6 +741,22 @@ export default function AdminMasterPage() {
             setCreating(false)
           }}
           onSave={saveMachine}
+          onUpload={uploadImage}
+        />
+      )}
+
+      {/* Category edit / create modal */}
+      {editingCat && (
+        <CategoryEditModal
+          category={editingCat}
+          isNew={creatingCat}
+          uploading={uploading}
+          loading={loading}
+          onClose={() => {
+            setEditingCat(null)
+            setCreatingCat(false)
+          }}
+          onSave={saveCategory}
           onUpload={uploadImage}
         />
       )}
@@ -842,6 +1017,170 @@ function EditModal({
               />
               <span className="text-sm font-semibold text-[#202e12]">Featured on homepage</span>
             </label>
+          </div>
+
+          {/* Actions */}
+          <div className="flex items-center justify-end gap-3 border-t border-[#d7d4c9] pt-4 pb-1">
+            <button
+              type="button"
+              onClick={onClose}
+              className="rounded-lg border border-[#d7d4c9] bg-white px-5 py-2.5 text-sm font-semibold text-[#5c6b52] transition hover:bg-[#efede5]"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              disabled={loading || uploading}
+              className="inline-flex items-center gap-2 rounded-lg bg-[#6b7c2a] px-6 py-2.5 font-display text-sm font-semibold text-[#f9f7f2] transition hover:bg-[#5a6a22] disabled:opacity-60"
+            >
+              {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
+              {loading ? 'Saving...' : 'Save'}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  )
+}
+
+// ---- Category edit modal ----
+function CategoryEditModal({
+  category,
+  isNew,
+  uploading,
+  loading,
+  onClose,
+  onSave,
+  onUpload,
+}: {
+  category: CategoryRow
+  isNew: boolean
+  uploading: boolean
+  loading: boolean
+  onClose: () => void
+  onSave: (c: CategoryRow, isNew: boolean) => void
+  onUpload: (file: File) => Promise<string | null>
+}) {
+  const [form, setForm] = useState<CategoryRow>(category)
+
+  function update<K extends keyof CategoryRow>(key: K, value: CategoryRow[K]) {
+    setForm((f) => ({ ...f, [key]: value }))
+  }
+
+  async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    if (!file) return
+    const url = await onUpload(file)
+    if (url) update('image', url)
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    onSave(form, isNew)
+  }
+
+  function slugify(s: string) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+  }
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/50 p-3 py-6 sm:p-4 sm:py-8">
+      <div className="w-full max-w-lg rounded-2xl bg-[#f9f7f2] shadow-2xl">
+        {/* Header */}
+        <div className="flex items-center justify-between border-b border-[#d7d4c9] px-4 py-4 sm:px-6">
+          <h2 className="font-display text-xl font-bold text-[#202e12]">
+            {isNew ? 'Add Category' : 'Edit Category'}
+          </h2>
+          <button
+            onClick={onClose}
+            className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-[#efede5] text-[#5c6b52] transition hover:bg-[#d7d4c9]"
+          >
+            <X className="h-5 w-5" />
+          </button>
+        </div>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="max-h-[calc(100vh-8rem)] overflow-y-auto px-4 py-4 sm:max-h-[70vh] sm:px-6 sm:py-5">
+          {/* Image upload */}
+          <div className="mb-5">
+            <label className="mb-2 block text-sm font-semibold text-[#202e12]">Category Image</label>
+            <div className="flex items-center gap-4">
+              <div className="relative h-24 w-32 shrink-0 overflow-hidden rounded-lg border border-[#d7d4c9] bg-white">
+                {form.image ? (
+                  <Image src={form.image} alt="Preview" fill className="object-cover" sizes="128px" />
+                ) : (
+                  <div className="flex h-full items-center justify-center">
+                    <ImageIcon className="h-8 w-8 text-[#5c6b52]/40" />
+                  </div>
+                )}
+              </div>
+              <label className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-[#d7d4c9] bg-white px-4 py-2.5 text-sm font-semibold text-[#6b7c2a] transition hover:border-[#6b7c2a]">
+                {uploading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Upload className="h-4 w-4" />}
+                {uploading ? 'Uploading...' : 'Upload Image'}
+                <input type="file" accept="image/*" onChange={handleFileChange} className="hidden" disabled={uploading} />
+              </label>
+            </div>
+            <input
+              type="text"
+              value={form.image}
+              onChange={(e) => update('image', e.target.value)}
+              placeholder="Or paste image URL"
+              className="mt-2 w-full rounded-lg border border-[#d7d4c9] bg-white px-3 py-2 text-sm text-[#202e12] outline-none focus:border-[#6b7c2a]"
+            />
+          </div>
+
+          {/* Name + slug */}
+          <div className="mb-4 grid gap-4 sm:grid-cols-2">
+            <div>
+              <label className="mb-1 block text-sm font-semibold text-[#202e12]">Name</label>
+              <input
+                type="text"
+                required
+                value={form.name}
+                onChange={(e) => {
+                  update('name', e.target.value)
+                  if (isNew) update('slug', slugify(e.target.value))
+                }}
+                className="w-full rounded-lg border border-[#d7d4c9] bg-white px-3 py-2.5 text-sm text-[#202e12] outline-none focus:border-[#6b7c2a]"
+                placeholder="e.g. Agricultural Equipment"
+              />
+            </div>
+            <div>
+              <label className="mb-1 block text-sm font-semibold text-[#202e12]">Slug</label>
+              <input
+                type="text"
+                required
+                value={form.slug}
+                onChange={(e) => update('slug', slugify(e.target.value))}
+                className="w-full rounded-lg border border-[#d7d4c9] bg-white px-3 py-2.5 text-sm text-[#202e12] outline-none focus:border-[#6b7c2a]"
+                placeholder="agricultural-equipment"
+              />
+            </div>
+          </div>
+
+          {/* Short name */}
+          <div className="mb-4">
+            <label className="mb-1 block text-sm font-semibold text-[#202e12]">Short Name</label>
+            <input
+              type="text"
+              required
+              value={form.short_name}
+              onChange={(e) => update('short_name', e.target.value)}
+              className="w-full rounded-lg border border-[#d7d4c9] bg-white px-3 py-2.5 text-sm text-[#202e12] outline-none focus:border-[#6b7c2a]"
+              placeholder="Agricultural"
+            />
+          </div>
+
+          {/* Blurb */}
+          <div className="mb-6">
+            <label className="mb-1 block text-sm font-semibold text-[#202e12]">Blurb</label>
+            <textarea
+              value={form.blurb}
+              onChange={(e) => update('blurb', e.target.value)}
+              rows={3}
+              className="w-full rounded-lg border border-[#d7d4c9] bg-white px-3 py-2.5 text-sm text-[#202e12] outline-none focus:border-[#6b7c2a]"
+              placeholder="Short description of this category..."
+            />
           </div>
 
           {/* Actions */}

@@ -6,6 +6,7 @@ import { MapPin, Clock, ArrowUpRight, MessageCircle } from 'lucide-react'
 import type { Machine } from '@/lib/products'
 import { getCategory, waOrderLink } from '@/lib/products'
 import { cn } from '@/lib/utils'
+import { TiltCard } from '@/components/tilt-card'
 
 export function MachineCard({ machine, variant = 'light' }: { machine: Machine; variant?: 'light' | 'dark' }) {
   const category = getCategory(machine.category)
@@ -18,7 +19,7 @@ export function MachineCard({ machine, variant = 'light' }: { machine: Machine; 
         : 'border-border bg-card hover:border-primary'
     )}>
       <Link href={`/stock/${machine.slug}`} className="block">
-        <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+        <TiltCard max={10} scale={1.02} className="relative aspect-[4/3] overflow-hidden bg-muted">
           <Image
             src={machine.image || '/placeholder.svg'}
             alt={machine.name}
@@ -29,7 +30,7 @@ export function MachineCard({ machine, variant = 'light' }: { machine: Machine; 
           <span className="absolute left-3 top-3 rounded-full bg-brand/90 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-wider text-brand-foreground shadow-md backdrop-blur-sm">
             {category?.shortName}
           </span>
-        </div>
+        </TiltCard>
       </Link>
 
       <div className="flex flex-1 flex-col p-5">
